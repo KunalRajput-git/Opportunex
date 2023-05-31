@@ -4,7 +4,7 @@ function CompanyCard({ company }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative w-full mt-4 p-4 rounded-lg text-gray-700 bg-white shadow-sm flex justify-between">
+    <div className="relative w-full mt-4 p-4 rounded-lg text-gray-700 bg-white shadow-sm flex justify-between border ">
       <div>
         <div className="flex items-center">
           <h1 className="font-semibold line-clamp-1 text-indigo-600">
