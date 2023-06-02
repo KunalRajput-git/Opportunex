@@ -80,7 +80,7 @@ const Footer = () => {
 
       <p className="text-center mt-12 text-gray-500 text-lg">
         Copyright © 2022 - {date.getFullYear()}. Made with ♥ by{" "}
-        <span className="text-black font-semibold">Team Opportunex</span>.
+        <span className="text-black font-semibold">Kunal Rajput - Full Stack Engineer</span>.
         Illustrations from Glazestock
       </p>
     </footer>

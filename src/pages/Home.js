@@ -13,7 +13,10 @@ import Dashboard from "./Dashboard";
 const Home = () => {
   return (
     <>
+      {/* <Header /> */}
       <Companies />
+
+      {/* <Footer /> */}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   let menuToggleHandler = () => {
     if (window.innerWidth > 768) {
@@ -19,7 +19,7 @@ const Navbar = () => {
   window.addEventListener("resize", menuToggleHandler);
 
   return (
-    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4 rounded-xl md:py-6 md:px-12 md:fixed top-0 left-0 z-10 md:rounded-none">
+    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4 rounded-xl md:py-6 md:px-4 md:fixed top-0 left-0 z-10 md:rounded-none">
       <div className="flex justify-between items-center">
         <a href="/" class="text-2xl md:text-3xl font-bold text-indigo-600">
           Opportunex
