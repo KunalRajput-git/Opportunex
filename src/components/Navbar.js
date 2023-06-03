@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   let menuToggleHandler = () => {
     if (window.innerWidth > 768) {

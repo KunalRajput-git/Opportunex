@@ -1,15 +1,26 @@
 const Search = () => {
   return (
-    <div className="flex m-2 justify-center ">
-      <div className="w-11/12 xl:w-4/5 flex justify-center gap-4">
+    <div className="border w-full border-b-0 p-2 px-4 flex justify-between items-center">
+      <div className="w-4/5">
+        <h1 className="text-gray-700 text-sm font-semibold m-auto">
+          Search companies
+        </h1>
         <input
-          className="border bg-gray-200 border-blue-950 rounded-md w-4/5 xl:w-8/12 p-3 outline-none"
-          type="text"
-          placeholder="company name, industry, location"
+          placeholder="Enter keyword, category or job title"
+          className="w-11/12 outline-none mt-1"
         />
-        <button className="bg-blue-900 font-medium p-2 px-4 text-white cursor-pointer rounded-lg">
-          Search
-        </button>
+      </div>
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          class="text-gray-700"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg>
       </div>
     </div>
   );

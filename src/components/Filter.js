@@ -1,109 +1,120 @@
 import { useState } from "react";
 
 const Filter = () => {
-  const [industries, setIndustries] = useState([
-    { id: 1, name: "Pawn" },
-    { id: 2, name: "Groceries" },
-    { id: 3, name: "Technology" },
-    { id: 4, name: "Healthcare" },
-  ]);
-
+  const [isDrop, setIsDrop] = useState(false);
   return (
-    <div className="min-w-full flex flex-col gap-2 p-4 items-center border  border-gray-300 shadow-lg rounded-lg">
-      <h1 className="text-xl font-medium text-blue-900"> Filters</h1>
-      <div className="border w-4/5 p-2 relative">
-        {industries.length ? (
-          <div className="p-2 pb-4">
-            {industries.map((industry) => {
-              return (
-                <>
-                  <h1
-                    key={industry.id}
-                    className="mt-2 ml-1 inline-block bg-blue-950 p-1 px-2 font-medium rounded-sm text-white cursor-default"
-                  >
-                    {industry.name}{" "}
-                    <span
-                      className="ml-2"
-                      onClick={() => {
-                        setIndustries(
-                          industries.filter(
-                            (filteredIndustry) =>
-                              filteredIndustry.id !== industry.id
-                          )
-                        );
-                      }}
-                    >
-                      X
-                    </span>
-                  </h1>
-                </>
-              );
-            })}
+    <div className="flex  flex-col md:flex-row">
+      <div className="w-full md:w-2/5 lg:w-1/3 p-4 bg--600 flex justify-between border border-r-0 relative">
+        <h1 className="text-gray-700 font-semibold">Filter by Category</h1>
+        <button className="text-gray-700" onClick={() => setIsDrop(!isDrop)}>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 8l7.5 7.5L19 8"
+            />
+          </svg>
+        </button>
+        {isDrop ? (
+          <div className="absolute top-14 z-10 h-64 bg-white w-full border right-0 overflow-x-scroll ">
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Administration (2)</span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">BookKeeping (5)</span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Business Development (1)</span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">
+                Corporate Strategy & Development (3)
+              </span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">
+                Customer Service & Support (2)
+              </span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Sales (6)</span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Real Eastate (4)</span>
+            </label>
+
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Marketing (5)</span>
+            </label>
+            <label class="flex items-center px-3 mt-2">
+              <input
+                type="checkbox"
+                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+              />
+              <span class="ml-2 text-gray-700">Administration (2)</span>
+            </label>
           </div>
         ) : null}
-
-        <input
-          placeholder="e.g. Technology"
-          className="bg-transparent outline-none px-2  "
-        />
-        <div className="absolute border border-gray-400 w-full left-0 top-12 bg-white">
-          <h1 className="p-2 text-gray-700 hover:bg-blue-950 hover:text-white font-medium cursor-default duration-150">
-            Technology
-          </h1>
-          <h1 className="p-2 text-gray-700 hover:bg-blue-950 hover:text-white font-medium cursor-default duration-150">
-            Grocerie
-          </h1>
-          <h1 className="p-2 text-gray-700 hover:bg-blue-950 hover:text-white font-medium cursor-default duration-150">
-            Pawn
-          </h1>
-
-          <h1 className="p-2 text-gray-700 hover:bg-blue-950 hover:text-white font-medium cursor-default duration-150">
-            Healthcare
+      </div>
+      <div className="border w-full md:w-3/5 lg:w-[67%] flex justify-between py-4 md:py-0 px-6 items-center border-t-0 md:border-t">
+        <div>
+          <h1 className="font-semibold bg-indigo-200 px-4 py-1 text-indigo-600">
+            Reset
           </h1>
         </div>
+        <div className="flex gap-3 items-center">
+          <div className="bg-indigo-200 w-8 h-8 rounded-full text-indigo-600 flex items-center justify-center">
+            <h1 className="font-semibold">0</h1>
+          </div>
+          <h1 className="text-gray-700 font-semibold">Favourite Companies</h1>
+        </div>
       </div>
-
-      {/* <select className="w-4/5 focus:outline-none p-2 font-medium text-blue-900 cursor-pointer border-4 border-blue-900 ">
-        <option className="text-center">-- Location --</option>
-        <option className="">Delhi</option>
-        <option className="">Punjab</option>
-      </select>
-      <button className="w-4/5 border-2 p-3 bg-blue-900 text-white font-medium rounded-lg ">
-        Apply
-      </button> */}
     </div>
   );
 };
 
 export default Filter;
-
-{
-  /* <div class="flex flex-col md:flex-row items-center justify-start mt-8 gap-4">
-            <input
-              class="w-full md:w-1/2 px-6 py-3 border rounded-lg gap-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-            shadow-md text-gray-500 font-medium"
-              type="text"
-              placeholder="Search company name, industry, or location"
-              aria-label="Search"
-            />
-            <button class="w-full md:w-24 bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-bold duration-200 focus:outline-none focus:ring-2 focus:ring-blue-750 focus:border-transparent">
-              Search
-            </button>
-          </div> */
-}
-{
-  /* <div class="flex flex-wrap items-center mt-8">
-            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2 mb-2 hover:bg-gray-300">
-              Technology
-            </button>
-            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2 mb-2 hover:bg-gray-300">
-              Software
-            </button>
-            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2 mb-2 hover:bg-gray-300">
-              Healthcare
-            </button>
-            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2 mb-2 hover:bg-gray-300">
-              Delhi
-            </button>
-          </div> */
-}

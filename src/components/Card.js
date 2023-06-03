@@ -1,10 +1,13 @@
 import { useState } from "react";
 
-function CompanyCard({ company }) {
+function CompanyCard({ company, onCompanyCardClickHandler }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative w-full mt-4 p-4 rounded-lg text-gray-700 bg-white flex justify-between border items-center border-gray-300">
+    <div
+      className="relative w-full mt-4 p-4 rounded-lg text-gray-700 bg-white flex justify-between border items-center border-gray-300 hover:scale-105 hover:shadow-lg duration-300"
+      onClick={onCompanyCardClickHandler}
+    >
       <div className="flex gap-4">
         <div className="border w-12 h-12 rounded-md flex justify-center items-center">
           <img src={company.company_logo} className="w-3/5" />
@@ -55,24 +58,6 @@ function CompanyCard({ company }) {
             d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"
           />
         </svg>
-      </div>
-
-      <div className="absolute top-0 right-0 mt-4 mr-4 flex items-center space-x-2">
-        {/* <button className="text-gray-500 hover:text-gray-700 focus:outline-none">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 3h8v8H3zM13 3h8v8h-8zM13 13h8v8h-8zM3 13h8v8H3z"
-            />
-          </svg>
-        </button> */}
       </div>
     </div>
   );
