@@ -1,13 +1,17 @@
-const Search = () => {
+const Search = ({ isCompanyOverviewVisible }) => {
   return (
-    <div className="border w-full border-b-0 p-2 px-4 flex justify-between items-center">
+    <div
+      className={`${
+        isCompanyOverviewVisible && "hidden"
+      } border-4 flex md:flex w-full rounded-md  p-2 px-4  justify-between items-center bg-white  md:w-2/3 mt-4 md:mb-4  border-indigo-600`}
+    >
       <div className="w-4/5">
         <h1 className="text-gray-700 text-sm font-semibold m-auto">
           Search companies
         </h1>
         <input
-          placeholder="Enter keyword, category or job title"
-          className="w-11/12 outline-none mt-1"
+          placeholder="Enter keyword, category or job title "
+          className="w-11/12 outline-none mt-1 bg-white"
         />
       </div>
       <div>

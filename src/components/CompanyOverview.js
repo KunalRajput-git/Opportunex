@@ -1,7 +1,14 @@
-const CompanyOverview = ({ onViewListClickHandler }) => {
+const CompanyOverview = ({
+  isCompanyOverviewVisible,
+  onViewListClickHandler,
+}) => {
   return (
-    <div className="w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll md:h-[71vh]">
-      <div className="border-b w-full p-4 pr-8 flex items-center justify-between">
+    <div
+      className={`${
+        !isCompanyOverviewVisible && "hidden"
+      } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll md:h-[81vh]`}
+    >
+      <div className="border md:border-0 md:border-b  w-full p-4 pr-8 flex items-center justify-between">
         <div
           className="md:hidden flex items-center justify-between gap-3 cursor-pointer "
           onClick={onViewListClickHandler}
@@ -93,7 +100,7 @@ const CompanyOverview = ({ onViewListClickHandler }) => {
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                   </svg>
                 </button>
-                <button className="px-4 py-2 text-gray-700 mt-4">
+                <button className="px-4 py-2  mt-4">
                   Favourite this company
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

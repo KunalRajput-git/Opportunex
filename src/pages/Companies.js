@@ -5,54 +5,59 @@ import Search from "../components/Search";
 import Filter from "../components/Filter";
 import CompanyContainer from "../components/CompanyContainer";
 import CompanyOverview from "../components/CompanyOverview";
-
+import Footer from "../components/Footer";
+import IMG4 from "../assets/img4.png";
 const Companies = () => {
-  const [isCompanyOverviewVisible, setIsCompanyOverviewVisble] = useState(true);
+  const [isCompanyOverviewVisible, setIsCompanyOverviewVisible] =
+    useState(false);
   const [isCompanyContainerVisible, setIsCompanyContainerVisible] =
     useState(true);
 
-  const [whosActive, setWhoIsActive] = useState(false);
-  let toggler = () => {
-    if (window.innerWidth > 768) {
-      setIsCompanyOverviewVisble(true);
-      setIsCompanyContainerVisible(true);
-    } else {
-      setIsCompanyOverviewVisble(false);
-    }
-  };
-
-  window.addEventListener("resize", toggler);
-
   const onCompanyCardClickHandler = () => {
     if (window.innerWidth < 768) {
-      setIsCompanyOverviewVisble(true);
+      setIsCompanyOverviewVisible(true);
       setIsCompanyContainerVisible(false);
     }
   };
-
   const onViewListClickHandler = () => {
-    setIsCompanyOverviewVisble(false);
+    setIsCompanyOverviewVisible(false);
     setIsCompanyContainerVisible(true);
   };
 
-  useEffect(() => {
-    toggler();
-  }, []);
   return (
     <>
       <Navbar />
-      <div className="md:mt-24">
-        <Search />
-        <Filter />
+
+      <div className="mt-24 w-full flex justify-between bg--600 px-12 py-8">
+        <div className="w-4/5 mt-4">
+          <h1 className="font-bold text-6xl text-gray-700">
+            Find your next <span className="text-indigo-600">Dream</span> job.
+          </h1>
+          <p className="w-4/5  mt-8 text-xl font-semibold text-gray-500">
+            "Opportunex: Your ultimate career companion. Explore top companies
+            like Microsoft, Google and Atlassian effortlessly with our intuitive
+            tracker and discover your dream job today!"
+          </p>
+
+          <Search isCompanyOverviewVisible={isCompanyOverviewVisible} />
+        </div>
+        <div className="w-1/4">
+          <img src={IMG4}/>
+        </div>
+      </div>
+      <div className="">
+        <Filter isCompanyOverviewVisible={isCompanyOverviewVisible} />
+
         <div className="flex">
-          {isCompanyContainerVisible && (
-            <CompanyContainer
-              onCompanyCardClickHandler={onCompanyCardClickHandler}
-            />
-          )}
-          {isCompanyOverviewVisible && (
-            <CompanyOverview onViewListClickHandler={onViewListClickHandler} />
-          )}
+          <CompanyContainer
+            isCompanyContainerVisible={isCompanyContainerVisible}
+            onCompanyCardClickHandler={onCompanyCardClickHandler}
+          />
+
+          <CompanyOverview
+            isCompanyOverviewVisible={isCompanyOverviewVisible}
+            onViewListClickHandler={onViewListClickHandler}
+          />
         </div>
       </div>
     </>

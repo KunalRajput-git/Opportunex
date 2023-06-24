@@ -1,7 +1,10 @@
 import CompanyCard from "./Card";
 import Pagination from "./Pagination";
 
-const CompanyContainer = ({ onCompanyCardClickHandler }) => {
+const CompanyContainer = ({
+  onCompanyCardClickHandler,
+  isCompanyContainerVisible,
+}) => {
   let companies = [
     {
       id: 2,
@@ -109,7 +112,11 @@ const CompanyContainer = ({ onCompanyCardClickHandler }) => {
   ];
 
   return (
-    <div className="w-full md:w-2/5 lg:w-1/3 md:h-[71vh] md:overflow-y-scroll bg--50 border-r-2">
+    <div
+      className={`${
+        !isCompanyContainerVisible && "hidden"
+      } md:block w-full md:w-2/5 lg:w-1/3 md:h-[81vh] md:overflow-y-scroll bg--50 border-r-2 bg-gray-100`}
+    >
       <div className="w-[95%] m-auto pb-4">
         {companies.map((company) => (
           <CompanyCard

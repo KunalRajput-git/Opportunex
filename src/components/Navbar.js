@@ -19,9 +19,9 @@ const Navbar = () => {
   window.addEventListener("resize", menuToggleHandler);
 
   return (
-    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4 rounded-xl md:py-6 md:px-4 md:fixed top-0 left-0 z-10 md:rounded-none">
+    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4 rounded-xl md:py-6 md:px-16 md:fixed top-0 left-0 z-10 md:rounded-none shadow-sm">
       <div className="flex justify-between items-center">
-        <a href="/" class="text-2xl md:text-3xl font-bold text-indigo-600">
+        <a href="/" class="text-2xl md:text-4xl font-bold text-indigo-600">
           Opportunex
           {/* navigatorx careerque opportunex */}
         </a>
@@ -49,15 +49,19 @@ const Navbar = () => {
           <li>
             <a
               href="#companies"
-              class=" hover:text-blue-600  tracking-wider lg:text-xl text-indigo-600 font-semibold"
+              class={`" hover:text-blue-600  tracking-wider ${
+                isLogin ? "text-xl" : "lg:text-xl"
+              } text-gray-700 "`}
             >
               Companies
             </a>
           </li>
           <li>
-            <a
-              href="#about"
-              class="text-gray-700 hover:text-blue-600  tracking-wider lg:text-xl"
+          <a
+              href="#companies"
+              class={`" hover:text-blue-600  tracking-wider ${
+                isLogin ? "text-xl" : "lg:text-xl"
+              } text-indigo-600  font-semibold "`}
             >
               Tracker
             </a>

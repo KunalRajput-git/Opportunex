@@ -1,7 +1,7 @@
 const Footer = () => {
   let date = new Date();
   return (
-    <footer class="py-12 border border-t">
+    <footer class="py-12  border-t-2">
       <div className="w-11/12 flex justify-between font-semibold m-auto">
         <div className="text-gray-500 w-1/3">
           <h1 className="text-black text-lg">Opportunex</h1>

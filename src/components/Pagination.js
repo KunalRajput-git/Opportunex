@@ -1,6 +1,6 @@
 const Pagination = () => {
   return (
-    <div className="flex items-center justify-between mt-6 border-gray-400  bg-white px-4">
+    <div className="flex items-center justify-between mt-6 border-gray-400  px-4">
       <button className=" py-2 px-3 mr-2 text-sm font-semibold text-gray-700 bg-white border border-gray-400 rounded hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:shadow-outline-gray hover:shadow flex items-center gap-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"

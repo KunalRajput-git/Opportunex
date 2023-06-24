@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-const Filter = () => {
+const Filter = ({ isCompanyOverviewVisible }) => {
   const [isDrop, setIsDrop] = useState(false);
   return (
-    <div className="flex  flex-col md:flex-row">
+    <div
+      className={`${
+        isCompanyOverviewVisible && "hidden"
+      } flex-col md:flex md:flex-row`}
+    >
       <div className="w-full md:w-2/5 lg:w-1/3 p-4 bg--600 flex justify-between border border-r-0 relative">
         <h1 className="text-gray-700 font-semibold">Filter by Category</h1>
         <button className="text-gray-700" onClick={() => setIsDrop(!isDrop)}>
@@ -22,7 +26,7 @@ const Filter = () => {
           </svg>
         </button>
         {isDrop ? (
-          <div className="absolute top-14 z-10 h-64 bg-white w-full border right-0 overflow-x-scroll ">
+          <div className="absolute top-14 z-10 h-64 bg-white w-full border left-0 overflow-x-scroll ">
             <label class="flex items-center px-3 mt-2">
               <input
                 type="checkbox"
@@ -97,6 +101,8 @@ const Filter = () => {
               />
               <span class="ml-2 text-gray-700">Administration (2)</span>
             </label>
+
+            <button className="bg-indigo-600 w-full text-white font-semibold py-2 mt-4">Apply</button>
           </div>
         ) : null}
       </div>
