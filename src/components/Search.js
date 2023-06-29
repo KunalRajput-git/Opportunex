@@ -9,8 +9,8 @@ const Search = ({ isCompanyOverviewVisible }) => {
         <h1 className="text-gray-700 text-sm font-semibold m-auto">
           Search companies
         </h1>
-        <input
-          placeholder="Enter keyword, category or job title "
+        <input type="search"
+          placeholder="Enter keyword, category or job title"
           className="w-11/12 outline-none mt-1 bg-white"
         />
       </div>

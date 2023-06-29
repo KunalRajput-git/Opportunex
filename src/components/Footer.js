@@ -4,7 +4,7 @@ const Footer = () => {
     <footer class="py-12  border-t-2">
       <div className="w-11/12 flex justify-between font-semibold m-auto">
         <div className="text-gray-500 w-1/3">
-          <h1 className="text-black text-lg">Opportunex</h1>
+          <h1 className="text-black text-xl">Opportunex</h1>
           <p className="mt-2 text-[17px]">
             We at Opportunex are dedicated to placing job seekers in control of
             their future through our ultimate job search tool. Our platform is
@@ -20,6 +20,7 @@ const Footer = () => {
             <li>Home</li>
             <li>Companies</li>
             <li>Tracker</li>
+            <li>Profile</li>
           </ul>
         </div>
 

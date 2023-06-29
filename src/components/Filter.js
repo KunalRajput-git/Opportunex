@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Filter = ({ isCompanyOverviewVisible }) => {
+const Filter = ({ isCompanyOverviewVisible, mainHeading, lists }) => {
   const [isDrop, setIsDrop] = useState(false);
   return (
     <div
@@ -8,8 +8,8 @@ const Filter = ({ isCompanyOverviewVisible }) => {
         isCompanyOverviewVisible && "hidden"
       } flex-col md:flex md:flex-row`}
     >
-      <div className="w-full md:w-2/5 lg:w-1/3 p-4 bg--600 flex justify-between border border-r-0 relative">
-        <h1 className="text-gray-700 font-semibold">Filter by Category</h1>
+      <div className="w-full md:w-2/5 lg:w-1/3 p-4 bg--600 flex justify-between border border-r-0 border-l-0 relative">
+        <h1 className="text-gray-700 font-semibold">Filter by {mainHeading}</h1>
         <button className="text-gray-700" onClick={() => setIsDrop(!isDrop)}>
           <svg
             viewBox="0 0 24 24"
@@ -26,83 +26,22 @@ const Filter = ({ isCompanyOverviewVisible }) => {
           </svg>
         </button>
         {isDrop ? (
-          <div className="absolute top-14 z-10 h-64 bg-white w-full border left-0 overflow-x-scroll ">
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Administration (2)</span>
-            </label>
+          <div className="absolute top-14 z-10 h-fit bg-white w-full border left-0 ">
+            {lists.map((list) => (
+              <>
+                <label class="flex items-center px-3 mt-2">
+                  <input
+                    type="checkbox"
+                    class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
+                  />
+                  <span class="ml-2 text-gray-700">{list} (2)</span>
+                </label>
+              </>
+            ))}
 
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">BookKeeping (5)</span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Business Development (1)</span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">
-                Corporate Strategy & Development (3)
-              </span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">
-                Customer Service & Support (2)
-              </span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Sales (6)</span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Real Eastate (4)</span>
-            </label>
-
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Marketing (5)</span>
-            </label>
-            <label class="flex items-center px-3 mt-2">
-              <input
-                type="checkbox"
-                class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
-              />
-              <span class="ml-2 text-gray-700">Administration (2)</span>
-            </label>
-
-            <button className="bg-indigo-600 w-full text-white font-semibold py-2 mt-4">Apply</button>
+            <button className="bg-indigo-600 w-full text-white font-semibold py-2 mt-4">
+              Apply
+            </button>
           </div>
         ) : null}
       </div>

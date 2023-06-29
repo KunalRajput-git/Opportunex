@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -12,3 +11,10 @@
   height: 10px;
   border-radius: 10px;
 }
+
+* {
+  font-family: "Montserrat Alternates", sans-serif;
+
+}
+
+

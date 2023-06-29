@@ -5,7 +5,7 @@ import Companies from "./Companies";
 import Dashboard from "./Dashboard";
 
 const Home = () => {
-  return (
+return (
     <>
       {/* <Header /> */}
       {/* <Companies /> */}
