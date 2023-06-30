@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   let date = new Date();
   return (
@@ -6,8 +8,8 @@ const Footer = () => {
         <div className="text-gray-500 w-1/3">
           <h1 className="text-black text-xl">Opportunex</h1>
           <p className="mt-2 text-[17px]">
-            We at Opportunex are dedicated to placing job seekers in control of
-            their future through our ultimate job search tool. Our platform is
+            Opportunex is dedicated to placing job seekers in control of their
+            future through its ultimate job search tool. The platform is
             designed with advanced functionality, such as a tracker and curated
             company exploration, to offer a seamless and efficient job search
             experience.
@@ -20,7 +22,9 @@ const Footer = () => {
             <li>Home</li>
             <li>Companies</li>
             <li>Tracker</li>
-            <li>Profile</li>
+            <Link to="/profile">
+              <li>Profile</li>
+            </Link>
           </ul>
         </div>
 
@@ -81,8 +85,10 @@ const Footer = () => {
 
       <p className="text-center mt-12 text-gray-500 text-lg">
         Copyright © 2022 - {date.getFullYear()}. Made with ♥ by{" "}
-        <span className="text-black font-semibold">Kunal Rajput - Full Stack Engineer</span>.
-        Illustrations from Glazestock
+        <span className="text-black font-semibold">
+          Kunal Rajput - Full Stack Engineer
+        </span>
+        . Illustrations from Glazestock
       </p>
     </footer>
   );

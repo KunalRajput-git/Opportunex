@@ -28,12 +28,12 @@ const Companies = () => {
     <>
       <Navbar />
 
-      <div className="mt-24 w-full flex justify-between bg--600 px-12 py-8">
+      <div className="mt-24 w-full  justify-between bg--600 px-12 py-8 hidden md:flex">
         <div className="w-4/5 mt-4">
           <h1 className="font-bold text-6xl text-gray-700">
             Find your next <span className="text-indigo-600">Dream</span> job.
           </h1>
-          <p className="w-4/5  mt-8 text-xl font-semibold text-gray-500">
+          <p className="w-4/5  mt-8 text-xl text-gray-500">
             "Opportunex: Your ultimate career companion. Explore top companies
             like Microsoft, Google and Atlassian effortlessly with our intuitive
             tracker and discover your dream job today!"
@@ -42,23 +42,38 @@ const Companies = () => {
           <Search isCompanyOverviewVisible={isCompanyOverviewVisible} />
         </div>
         <div className="w-1/4">
-          <img src={IMG4}/>
+          <img src={IMG4} />
         </div>
       </div>
-      <div className="">
-        <Filter isCompanyOverviewVisible={isCompanyOverviewVisible} />
-
-        <div className="flex">
-          <CompanyContainer
-            isCompanyContainerVisible={isCompanyContainerVisible}
-            onCompanyCardClickHandler={onCompanyCardClickHandler}
-          />
-
-          <CompanyOverview
-            isCompanyOverviewVisible={isCompanyOverviewVisible}
-            onViewListClickHandler={onViewListClickHandler}
+      {isCompanyContainerVisible && (
+        <div className="flex flex-col p-4 md:hidden">
+          <div className="w-full">
+            <p className="text-gray-700 text-sm font-semibold">
+              Companies | Companies List
+            </p>
+          </div>
+          <input
+            type="search"
+            className="border p-3 rounded-md mt-4"
+            placeholder="Enter keyword, category or job title"
           />
         </div>
+      )}
+      <Filter
+        mainHeading="Category"
+        isCompanyOverviewVisible={isCompanyOverviewVisible}
+      />
+
+      <div className="flex">
+        <CompanyContainer
+          isCompanyContainerVisible={isCompanyContainerVisible}
+          onCompanyCardClickHandler={onCompanyCardClickHandler}
+        />
+
+        <CompanyOverview
+          isCompanyOverviewVisible={isCompanyOverviewVisible}
+          onViewListClickHandler={onViewListClickHandler}
+        />
       </div>
     </>
   );

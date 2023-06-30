@@ -1,9 +1,10 @@
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import heroImg from "../assets/18915856.png";
+import Footer from "./Footer";
 
-const Header = () => {
+const HomePage = () => {
   return (
-    <header className="min-h-screen">
+    <>
       <Navbar />
       <div className="flex flex-col lg:flex-row items-center w-11/12 m-auto mt-6 md:mt-28">
         <div className="w-full md:w-11/12">
@@ -66,8 +67,9 @@ const Header = () => {
           />
         </div>
       </div>
-    </header>
+      <Footer />
+    </>
   );
 };
 
-export default Header;
+export default HomePage;
