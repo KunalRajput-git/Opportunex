@@ -1,5 +1,5 @@
-import CompanyCard from "./Card";
-import Pagination from "./Pagination";
+import CompanyCard from "../company_components/CompanyCard";
+import Pagination from "../Pagination";
 
 const CompanyContainer = ({
   onCompanyCardClickHandler,

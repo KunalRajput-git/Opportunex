@@ -26,15 +26,15 @@ const Filter = ({ isCompanyOverviewVisible, mainHeading, lists }) => {
           </svg>
         </button>
         {isDrop ? (
-          <div className="absolute top-14 z-10 h-fit bg-white w-full border left-0 ">
+          <div className="absolute top-14 z-10 h-fit bg-white w-full border left-0 flex flex-wrap justify-betwee pt-4 md:pt-2">
             {lists.map((list) => (
               <>
-                <label class="flex items-center px-3 mt-2">
+                <label class="flex items-center w-1/2 px-3 mt-2">
                   <input
                     type="checkbox"
                     class="h-5 w-5 rounded-full transition duration-150 ease-in-out"
                   />
-                  <span class="ml-2 text-gray-700">{list} (2)</span>
+                  <span class="ml-2 text-gray-700">{list}</span>
                 </label>
               </>
             ))}

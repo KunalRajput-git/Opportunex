@@ -3,15 +3,40 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: gray;
+  background-color: #e0e2e2;
   height: 10px;
   border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
 }
 
 * {
   font-family: "Montserrat Alternates", sans-serif;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+    no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+  opacity: 0.3;
+  pointer-events: all;
+}
+
+input[type="search"].dark::-webkit-search-cancel-button {
+  filter: invert(1);
+}
+

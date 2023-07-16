@@ -20,8 +20,8 @@ const Navbar = () => {
   window.addEventListener("resize", menuToggleHandler);
 
   return (
-    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4 rounded-xl md:py-5 md:fixed top-0 left-0 z-10 md:rounded-none border-b-2">
-      <div className="flex justify-between items-center">
+    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4  md:py-5 md:fixed top-0 left-0 z-10 border-b-2">
+      <div className="flex justify-between items-center ">
         <Link to="/">
           <button class="text-2xl md:text-4xl font-bold text-indigo-600">
             Opportunex {/* navigatorx careerque opportunex */}
@@ -47,7 +47,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div class="mt-4 md:mt-auto md:flex md:items-center md:gap-6 space-y-6 md:space-y-0">
+        <div class="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:gap-6 space-y-5 md:space-y-0">
           <NavLink
             to="/companies"
             className={({ isActive }) =>
@@ -84,33 +84,29 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="bg-indigo-200 text-indigo-600 py-2 px-4 rounded-md lg:text-xl outline-none focus:ring focus:ring-indigo-750 flex items-center gap-4"
+                className="bg-indigo-200 text-indigo-600 py-2 px-4 rounded-md duration-200 lg:text-xl outline-none focus:ring focus:ring-indigo-750 focus:border-transparent flex items-center gap-4"
               >
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="3"
-                    y="11"
-                    width="18"
-                    height="11"
-                    rx="2"
-                    ry="2"
-                  ></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
                 Login
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-in-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+                  />
+                </svg>
               </NavLink>
 
-              <NavLink to="/login">
+              <NavLink to="/signup">
                 <button
                   href="#about"
                   class=" bg-indigo-600 text-white  py-2 px-4 rounded-md duration-200 lg:text-xl outline-none focus:ring focus:ring-indigo-750 focus:border-transparent flex items-center gap-4"

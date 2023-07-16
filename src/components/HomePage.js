@@ -1,6 +1,10 @@
 import Navbar from "./Navbar";
-import heroImg from "../assets/18915856.png";
 import Footer from "./Footer";
+import COM_BENFTS from "../assets/benefits.png";
+import JOB_APP from "../assets/job_app.png";
+import FeatureItem from "./landing_components/FeatureItem";
+import FeatureWrapper from "./landing_components/FeatureWrapper";
+import HEADER_IMG from "../assets/header_img.png";
 
 const HomePage = () => {
   return (
@@ -61,12 +65,197 @@ const HomePage = () => {
           </div>
         </div>
         <div className="w-full md:w-3/5">
-          <img
-            src="https://bhumio.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.4e76c802.png&w=640&q=75"
-            className="mt-12"
-          />
+          <img src={HEADER_IMG} className="mt-12 w-96 h-96 m-auto" />
         </div>
       </div>
+
+      <div className="w-11/12 m-auto  mt-20 mb-28">
+        <div className="w-full md:w-2/3 m-auto">
+          <h3 className=" text-indigo-600 font-bold text-center text-lg">
+            STREAMLINE WITH OPPORTUNEX
+          </h3>
+
+          <h1 className="mt-6 text-3xl text-center font-bold  m-auto">
+            Tired of searching through countless company career pages and
+            dealing with disorganized job applications?
+          </h1>
+
+          <p className="m-auto mt-6 text-xl">
+            Finding the right job involves sifting through countless companies
+            and job postings. Keeping track of which companies you've applied
+            to, their application processes and follow-ups can be tedious and
+            time-consuming. This is where a tool like Opportunex can help
+            streamline your job search.
+          </p>
+        </div>
+      </div>
+
+      <FeatureWrapper
+        heading="300+ Companies for Job Seekers"
+        content=" Access career pages for top companies in a centralized talent hub,
+              streamlining your job search and saving you the hassle of
+              searching the web company by company."
+        img={COM_BENFTS}
+        align="left"
+      >
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          }
+          heading="Comprehensive company listing"
+          content=" Browse over 300 pre-vetted companies representing a diverse
+              range of industries and sectors."
+        />
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+          }
+          heading="Filter by industry"
+          content="Easily filter the company list industries to find
+              opportunities that match your expertise."
+        />
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+              ></path>
+            </svg>
+          }
+          heading="Dedicated career pages"
+          content="Direct links to each company's career page where you can view
+              current openings and apply directly."
+        />
+      </FeatureWrapper>
+
+      <FeatureWrapper
+        heading="Built-In Job Application Tracker"
+        content="Organize key details for each role you apply to, manage status
+              updates. Filters, search tools and status updates keep you
+              informed of your progress for each application."
+        img={JOB_APP}
+        align="right"
+        pt="md:pt-28"
+      >
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          }
+          heading="Job details"
+          content="Record role, date applied, company, job link, status, contacts
+              and notes."
+        />
+
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+          }
+          heading="Status filtering"
+          content="Sort applications by status (applied, scheduled, interviewing,
+                pending, selected declined)."
+        />
+
+        <FeatureItem
+          svg={
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="w-7 h-7 text-indigo-50"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+              ></path>
+            </svg>
+          }
+          heading="Keyword search"
+          content="Locate relevant applications quickly."
+        />
+      </FeatureWrapper>
+
       <Footer />
     </>
   );
