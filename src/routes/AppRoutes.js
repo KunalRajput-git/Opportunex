@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
-import HomePage from "../components/HomePage";
-import Companies from "../pages/Companies";
+import Home from "../components/Home";
 import Tracker from "../pages/Tracker";
 import Profile from "../pages/Profile";
 import ForgotPassword from "../pages/ForgotPassword";
 import Signup from "../pages/Signup";
 import ResetPassword from "../pages/ResetPassword";
 import CompanyLanding from "../components/company_components/CompanyLanding";
+import Companies from "../pages/Companies";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/tracker" element={<Tracker />} />

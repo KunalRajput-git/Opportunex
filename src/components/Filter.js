@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown } from "react-bootstrap-icons";
 
 const Filter = ({ isCompanyOverviewVisible, mainHeading, lists }) => {
   const [isDrop, setIsDrop] = useState(false);
@@ -11,19 +12,7 @@ const Filter = ({ isCompanyOverviewVisible, mainHeading, lists }) => {
       <div className="w-full md:w-2/5 lg:w-1/3 p-4 bg--600 flex justify-between border border-r-0 border-l-0 relative">
         <h1 className="text-gray-700 font-semibold">Filter by {mainHeading}</h1>
         <button className="text-gray-700" onClick={() => setIsDrop(!isDrop)}>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 8l7.5 7.5L19 8"
-            />
-          </svg>
+          <ChevronDown size="20" />
         </button>
         {isDrop ? (
           <div className="absolute top-14 z-10 h-fit bg-white w-full border left-0 flex flex-wrap justify-betwee pt-4 md:pt-2">

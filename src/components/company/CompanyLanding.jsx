@@ -6,18 +6,19 @@ import FeatureItem from "../landing_components/FeatureItem";
 import Footer from "../Footer";
 
 const CompanyLanding = () => {
+  window.scroll(0, 0);
   return (
     <>
       <Navbar />
 
       <div className="w-full pt-24 pb-20">
         <div className="w-11/12 m-auto  mt-12">
-          <div className="w-full md:w-2/3 m-auto">
-            <h3 className=" text-indigo-600 font-bold text-center text-lg">
+          <div className="w-full md:w-2/3 text-center m-auto">
+            <h3 className=" text-indigo-600 font-bold  text-lg">
               UNIFIED PLATFORM
             </h3>
 
-            <h1 className="mt-6 text-3xl text-center font-bold  m-auto">
+            <h1 className="mt-6 text-3xl  font-bold  m-auto">
               Career pages of over 300+ companies in one place.
             </h1>
 

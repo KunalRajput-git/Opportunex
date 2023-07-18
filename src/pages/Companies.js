@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Filter from "../components/Filter";
-import CompanyContainer from "../components/company_components/CompanyContainer";
-import CompanyOverview from "../components/company_components/CompanyOverview";
+import CompanyContainer from "../components/company/CompanyContainer";
+import CompanyOverview from "../components/company/CompanyOverview";
 const Companies = () => {
   const [isCompanyOverviewVisible, setIsCompanyOverviewVisible] =
     useState(false);

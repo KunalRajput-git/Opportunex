@@ -7,12 +7,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #e0e2e2;
-  height: 10px;
+  background-color: gray;
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
 }
 
 * {
@@ -39,4 +35,3 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 input[type="search"].dark::-webkit-search-cancel-button {
   filter: invert(1);
 }
-

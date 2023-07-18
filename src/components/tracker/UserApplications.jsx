@@ -1,9 +1,10 @@
 import NO_APPLICATION1 from "../../assets/no_application1.png";
 
 import Filter from "../Filter";
-import CompanyCard from "../company_components/CompanyCard";
+import CompanyCard from "../company/CompanyCard";
 import NoData from "./NoData";
-import CompanyCardSkeleton from "../company_components/CompanyCardSkeleton";
+import CompanyCardSkeleton from "../company/CompanyCardSkeleton";
+import { PlusCircle, PlusCircleFill } from "react-bootstrap-icons";
 let companies = [
   {
     id: 2,
@@ -128,17 +129,7 @@ const UserApplications = () => {
         />
 
         <button className="bg-indigo-600 px-4 py-3  flex  text-white font-semibold  items-center gap-3 rounded-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-plus-circle"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>
+          <PlusCircle size="20" />
         </button>
       </div>
       <div className=" md:hidden w-11/12 m-auto mb-4">
@@ -164,23 +155,23 @@ const UserApplications = () => {
       <div className="flex justify-between">
         <div className="md:h-[68vh] w-full md:overflow-x-hidden md:overflow-scroll">
           <div className="m-auto px-4 pb-4">
-             {companies.map((company) => (
+            {companies.map((company) => (
               <CompanyCard company={company} />
             ))}
 
-	  {/*
+            {/*
             <CompanyCardSkeleton />
             <CompanyCardSkeleton />
             <CompanyCardSkeleton />
             <CompanyCardSkeleton />
             <CompanyCardSkeleton />
 	  */}
-            
-	  {/*<NoData
+
+            {/*<NoData
               img={NO_APPLICATION1}
               heading="You have currently no applications to show"
               action_text="Application"
-            />*/} 
+            />*/}
           </div>
         </div>
       </div>
