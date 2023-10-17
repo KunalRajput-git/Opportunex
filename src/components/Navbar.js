@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  ArrowRightShort,
-  BoxArrowDownRight,
-  BoxArrowInRight,
-  List,
-} from "react-bootstrap-icons";
+import { ArrowRightShort, BoxArrowInRight, List } from "react-bootstrap-icons";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin] = useState(true);
 
   let menuToggleHandler = () => {
     if (window.innerWidth > 768) {
@@ -76,7 +71,10 @@ const Navbar = () => {
             Tracker
           </NavLink>
           {isLogin ? (
-            <NavLink className="border p-4 rounded-full w-full h-full  font-semibold  text-gray-700 flex items-center justify-center  bg-center bg-no-repeat bg-cover">
+            <NavLink
+              to="/profile"
+              className="border p-4 rounded-full font-semibold  text-gray-700 flex items-center justify-center  bg-center bg-no-repeat bg-cover w-12 h-12"
+            >
               <h1>K</h1>
             </NavLink>
           ) : (

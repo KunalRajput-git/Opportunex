@@ -9,6 +9,7 @@ const AuthWrapper = ({ children, img, heading, sub_heading, img_w }) => {
       <div className="flex justify-between pb-20 w-11/12 m-auto">
         <div className="w-2/6 pt-36 hidden md:block flex-shrink-0">
           <img
+          alt="auth-img"
             src={img}
             className={`translate -scale-x-100 mt-12 ml-8 ${
               img_w ? img_w : "w-full"

@@ -12,7 +12,7 @@ const CompanyOverview = ({
     <div
       className={`${
         !isCompanyOverviewVisible && "hidden"
-      } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll md:h-[81vh]`}
+      } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll md:h-[69vh]`}
     >
       <OverviewNav onViewListClickHandler={onViewListClickHandler} />
       <CompanyHeader />

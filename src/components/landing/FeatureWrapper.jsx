@@ -2,10 +2,13 @@ const FeatureWrapper = ({ children, heading, content, img, align, pt }) => {
   return (
     <div className={`pb-20  ${pt && pt}`}>
       <div className="w-11/12 m-auto flex flex-col md:flex-row">
-        <div className={`md:w-1/2 ${align == "right" && "order-last"}`}>
+        <div className={`md:w-1/2 ${align === "right" && "order-last"}`}>
           <img
+            alt="feature-img"
             src={img}
-            className={`m-auto ${align == "right" ? "md:mr-0" : "md:ml-0"} w-96 h-96`}
+            className={`m-auto ${
+              align === "right" ? "md:mr-0" : "md:ml-0"
+            } w-96 h-96`}
           />
         </div>
 

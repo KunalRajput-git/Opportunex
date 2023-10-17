@@ -14,18 +14,20 @@ const SingleApplication = () => {
         heading="Select an application from the right."
         action_text="to create one."
       /> */}
-      <div className="h-full overflow-y-scroll">
-        <div className=" mt-6 px-4 flex justify-between items-start">
-          <h1 className="w-2/3 font-semibold text-xl">
-            Job Application at Sunder Bhavan.
-          </h1>
-          <button
-            className="font-semibold rounded-sm"
-            onClick={() => setIsEditable(!isEditable)}
-          >
-            <PencilSquare size="24px" />
-          </button>
+      <div className="mt-6 px-4 flex justify-between items-start">
+        <div>
+          <h1 className="  font-semibold text-xl">Job Application at</h1>
+          <h1 className="text-indigo-600 font-bold">Microsoft Corporation</h1>
         </div>
+
+        <button
+          className="font-semibold rounded-sm"
+          onClick={() => setIsEditable(!isEditable)}
+        >
+          <PencilSquare size="24px" />
+        </button>
+      </div>
+      <div className="h-[76vh] w-[95%] m-auto mt-2 rounded-md overflow-y-scroll border">
         <div className="pt-2 px-6 bg-white">
           <div>
             <div className="mt-6 flex justify-between border-b-2">
@@ -97,7 +99,7 @@ const SingleApplication = () => {
 
             <div className="mt-6 bg-white">
               <h1 className="font-bold  underline flex items-center gap-4">
-                <h3> Notes </h3>
+                <h3> Comments </h3>
                 {isEditable && <PlusSquareFill />}
               </h1>
               {isEditable ? (

@@ -6,9 +6,9 @@ import Profile from "../pages/Profile";
 import ForgotPassword from "../pages/ForgotPassword";
 import Signup from "../pages/Signup";
 import ResetPassword from "../pages/ResetPassword";
-import CompanyLanding from "../components/company_components/CompanyLanding";
 import Companies from "../pages/Companies";
-
+import CompaniesLanding from "../components/company/CompanyLanding"
+import MailVerification from "../pages/MailVerification"
 const AppRoutes = () => {
   return (
     <Routes>
@@ -20,6 +20,7 @@ const AppRoutes = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/verify-mail" element={<MailVerification />} />
     </Routes>
   );
 };

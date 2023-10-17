@@ -1,7 +1,7 @@
 import REPAIR_IMG from "../assets/repair.png";
-import AuthWrapper from "../components/auth_components/AuthWrapper";
-import AuthInput from "../components/auth_components/AuthInput";
-import AuthButton from "../components/auth_components/AuthButton";
+import AuthWrapper from "../components/auth/AuthWrapper";
+import AuthInput from "../components/auth/AuthInput";
+import AuthButton from "../components/auth/AuthButton";
 
 const ForgotPassword = () => {
   return (

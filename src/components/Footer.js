@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   let date = new Date();
@@ -20,9 +20,16 @@ const Footer = () => {
           <div>
             <h1 className="text-lg">Navigation</h1>
             <ul className="text-gray-500 flex flex-col gap-2 mt-2">
-              <li>Home</li>
-              <li>Companies</li>
-              <li>Tracker</li>
+              <li>
+                <NavLink to="/"> Home </NavLink>
+              </li>
+              <li>
+                <NavLink to="/companies"> Companies </NavLink>
+              </li>
+              <li>
+                {" "}
+                <NavLink to="/tracker"> Tracker </NavLink>
+              </li>
               <Link to="/profile">
                 <li>Profile</li>
               </Link>
@@ -85,7 +92,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="mt-12 text-gray-500 text-lg w-11/12 m-auto text-center">
-        Copyright © 2022 - {date.getFullYear()}. Made with ♥ by{" "}
+        Copyright © 2022 - {date.getFullYear()}. Made with ❤ by{" "}
         <span className="text-black font-semibold">Kunal Rajput</span>.
         Illustrations from Glazestock
       </p>

@@ -1,10 +1,9 @@
-import NO_APPLICATION1 from "../../assets/no_application1.png";
-
 import Filter from "../Filter";
 import CompanyCard from "../company/CompanyCard";
+
+import { PlusCircle } from "react-bootstrap-icons";
 import NoData from "./NoData";
-import CompanyCardSkeleton from "../company/CompanyCardSkeleton";
-import { PlusCircle, PlusCircleFill } from "react-bootstrap-icons";
+import NO_APPLICATION1 from "../../assets/no_application1.png";
 let companies = [
   {
     id: 2,
@@ -116,9 +115,9 @@ const UserApplications = () => {
     <>
       <div className="p-4 gap-4 md:gap-0 flex justify-between items-center md:pt-24 lg:pt-28">
         <div className="flex-shrink-0">
-          <h1 className="text-xl font-semibold">Applied Jobs</h1>
+          <h1 className="text-xl font-semibold">My Applications</h1>
           <p className="text-gray-700 text-sm font-semibold">
-            Tracker | Applied Jobs
+            Tracker | My Applications
           </p>
         </div>
 
@@ -129,7 +128,7 @@ const UserApplications = () => {
         />
 
         <button className="bg-indigo-600 px-4 py-3  flex  text-white font-semibold  items-center gap-3 rounded-md">
-          <PlusCircle size="20" />
+          Add New <PlusCircle size="20" />
         </button>
       </div>
       <div className=" md:hidden w-11/12 m-auto mb-4">
@@ -152,29 +151,20 @@ const UserApplications = () => {
         ]}
       />
 
-      <div className="flex justify-between">
+      <div className="flex justify-between pb-20">
         <div className="md:h-[68vh] w-full md:overflow-x-hidden md:overflow-scroll">
           <div className="m-auto px-4 pb-4">
             {companies.map((company) => (
               <CompanyCard company={company} />
             ))}
-
-            {/*
-            <CompanyCardSkeleton />
-            <CompanyCardSkeleton />
-            <CompanyCardSkeleton />
-            <CompanyCardSkeleton />
-            <CompanyCardSkeleton />
-	  */}
-
-            {/*<NoData
-              img={NO_APPLICATION1}
-              heading="You have currently no applications to show"
-              action_text="Application"
-            />*/}
           </div>
         </div>
       </div>
+      {/* <NoData
+        img={NO_APPLICATION1}
+        heading="You have currently no applications to show"
+        action_text="Application"
+      /> */}
     </>
   );
 };

@@ -12,10 +12,10 @@ const OverviewNav = ({ onViewListClickHandler }) => {
       </div>
       <div className="flex items-center justify-between gap-3">
         <ArrowLeft />
-        <h1 className="text-sm font-semibold text-gray-700">Prev Company</h1>
+        <h1 className="text-sm font-semibold text-gray-700">Prev</h1>
       </div>
       <div className="flex items-center justify-between gap-3">
-        <h1 className="text-sm font-semibold text-gray-700">Next company</h1>
+        <h1 className="text-sm font-semibold text-gray-700">Next</h1>
         <ArrowRight />
       </div>
     </div>

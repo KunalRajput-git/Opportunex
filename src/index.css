@@ -7,11 +7,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: gray;
+  background-color: #b2beb5;
   border-radius: 10px;
 }
 
-* {
+body {
   font-family: "Montserrat Alternates", sans-serif;
 }
 

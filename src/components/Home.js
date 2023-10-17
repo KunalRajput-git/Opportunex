@@ -4,6 +4,7 @@ import HEADER_IMG from "../assets/header_img.png";
 import { ArrowRightShort, Binoculars } from "react-bootstrap-icons";
 import CompaniesFeatures from "./landing/CompaniesFeatures";
 import TrackerFeatures from "./landing/TrackerFeatures";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -20,25 +21,29 @@ const Home = () => {
           </p>
 
           <div className="mt-4 flex flex-col md:flex-row gap-4 md:items-center justify-start">
-            <a
-              href="#about"
-              class=" bg-indigo-600 text-white  py-5 px-6 rounded-md  tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
+            <NavLink
+              to="/signup"
+              className=" bg-indigo-600  text-white  py-5 px-6 rounded-md  tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
             >
               Get Started
               <ArrowRightShort size={32} />
-            </a>
+            </NavLink>
 
-            <a
-              href="#about"
-              class="bg-indigo-200 text-indigo-600 py-5 px-6 rounded-md tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
+            <NavLink
+              to="/companies"
+              className="bg-indigo-200  text-indigo-600 py-5 px-6 rounded-md tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
             >
               <Binoculars />
               Explore Companies
-            </a>
+            </NavLink>
           </div>
         </div>
         <div className="w-full md:w-3/5">
-          <img src={HEADER_IMG} className="mt-12 w-96 h-96 m-auto" />
+          <img
+            alt="header-img"
+            src={HEADER_IMG}
+            className="mt-12 w-96 h-96 m-auto"
+          />
         </div>
       </div>
 

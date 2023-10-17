@@ -1,8 +1,8 @@
 import SIGNUP_IMG from "../assets/signup.png";
-import AuthWrapper from "../components/auth_components/AuthWrapper";
-import AuthInput from "../components/auth_components/AuthInput";
-import AuthButton from "../components/auth_components/AuthButton";
-import AuthLabel from "../components/auth_components/AuthLabel";
+import AuthWrapper from "../components/auth/AuthWrapper";
+import AuthInput from "../components/auth/AuthInput";
+import AuthButton from "../components/auth/AuthButton";
+import AuthLabel from "../components/auth/AuthLabel";
 
 const Signup = () => {
   return (

@@ -1,7 +1,7 @@
-import Authwrapper from "../components/auth_components/AuthWrapper";
+import Authwrapper from "../components/auth/AuthWrapper";
 import RESET_IMG from "../assets/reset.png";
-import AuthInput from "../components/auth_components/AuthInput";
-import AuthButton from "../components/auth_components/AuthButton";
+import AuthInput from "../components/auth/AuthInput";
+import AuthButton from "../components/auth/AuthButton";
 
 const ResetPassword = () => {
   return (
