@@ -1,3 +1,5 @@
+import SuggestBtn from "./SuggestBtn";
+
 const AboutCompany = () => {
   return (
     <div className="w-11/12 m-auto mt-4">
@@ -18,10 +20,6 @@ const AboutCompany = () => {
             </td>
           </tr>
           <tr className="w-full lg:w-[48%]">
-            <td className="font-bold pr-4">Headquarters:</td>
-            <td>Redmond, United States</td>
-          </tr>
-          <tr className="w-full lg:w-[48%]">
             <td className="font-bold pr-4">Size:</td>
             <td>10000+ Employees</td>
           </tr>
@@ -31,11 +29,11 @@ const AboutCompany = () => {
           </tr>
           <tr className="w-full lg:w-[48%]">
             <td className="font-bold pr-4">Industry:</td>
-            <td>Computer Hardware Development</td>
-          </tr>
-          <tr className="w-full lg:w-[48%]">
-            <td className="font-bold pr-4">Revenue:</td>
-            <td>$10+ billion (USD)</td>
+            <td>
+              {/* Computer Hardware Development
+               */}
+              <SuggestBtn />
+            </td>
           </tr>
         </tbody>
       </table>
