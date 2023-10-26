@@ -1,15 +1,17 @@
 import Navbar from "../components/Navbar";
 import SingleApplication from "../components/tracker/SingleApplication";
+import TrackerHeader from "../components/tracker/TrackerHeader";
 import UserApplications from "../components/tracker/UserApplications";
 const Tracker = () => {
   return (
     <>
-      <Navbar />
-      <div className="flex h-[100vh] overflow-hidden">
-        <div className="w-full  lg:w-[65%]">
-          <UserApplications />
-        </div>
-        <div className="w-[35%] text border-l-2  pt-24 -mt-2 hidden lg:block ">
+      <div className="h-screen overflow-hidden pb-56">
+        <Navbar />
+        <div className="flex h-full">
+          <div className="w-full lg:w-[65%]">
+            <TrackerHeader />
+            <UserApplications />
+          </div>
           <SingleApplication />
         </div>
       </div>

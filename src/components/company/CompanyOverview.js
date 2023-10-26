@@ -12,7 +12,7 @@ const CompanyOverview = ({
     <div
       className={`${
         !isCompanyOverviewVisible && "hidden"
-      } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll md:h-[69vh]`}
+      } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll`}
     >
       <OverviewNav onViewListClickHandler={onViewListClickHandler} />
       <CompanyHeader />
@@ -27,7 +27,7 @@ const CompanyOverview = ({
         </button>
         <button className="text-sm md:text-lg border p-2 md:p-3 rounded-md flex items-center gap-4">
           Favourite this
-         <Heart/>
+          <Heart />
         </button>
       </div>
       <div className="w-full border-t-2 mt-6"></div>
