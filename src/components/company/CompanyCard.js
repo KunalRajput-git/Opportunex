@@ -6,7 +6,9 @@ import {
   DashCircle,
   Heart,
   HeartFill,
+  InfoCircleFill,
 } from "react-bootstrap-icons";
+import { Tooltip } from "react-tooltip";
 
 function CompanyCard({ company, onCompanyCardClickHandler }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -20,10 +22,19 @@ function CompanyCard({ company, onCompanyCardClickHandler }) {
 
   return (
     <div
-      className="relative w-full mt-4 p-4 rounded-lg text-gray-700 bg-white flex justify-between border items-center border-gray-300 
-      hover:shadow-lg duration-300"
+      className="relative w-full mt-4 p-4 pr-12 rounded-lg text-gray-700 bg-white flex justify-between border items-center border-gray-300 
+      hover:shadow-lg duration-300 cursor-pointer"
       onClick={onCompanyCardClickHandler}
     >
+      <div
+        className="absolute right-2 text-xs top-2 text-red-600 cursor-pointer"
+        data-tooltip-id="my-tooltip"
+        data-tooltip-content="Under Verification!"
+      >
+        <InfoCircleFill size="18" />
+        <Tooltip id="my-tooltip" />
+      </div>
+
       <div className="flex gap-4">
         <div className="border w-12 h-12 rounded-md flex justify-center items-center">
           <img src={company.company_logo} className="w-3/5" />

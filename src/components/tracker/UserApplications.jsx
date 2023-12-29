@@ -113,18 +113,18 @@ let companies = [
 const UserApplications = () => {
   return (
     <>
-      {/* <div className="w-full overflow-y-scroll h-full">
+      <div className="w-full overflow-y-scroll h-full">
         <div className="m-auto px-4 pb-8">
           {companies.map((company) => (
             <CompanyCard company={company} />
           ))}
         </div>
-      </div> */}
-      <NoData
+      </div>
+      {/* <NoData
         img={NO_APPLICATION1}
         heading="You have currently no applications to show"
         action_text="Application"
-      />
+      /> */}
     </>
   );
 };
