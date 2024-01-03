@@ -3,55 +3,24 @@ import AuthWrapper from "../components/auth/AuthWrapper";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLabel from "../components/auth/AuthLabel";
-import { useEffect, useState } from "react";
 import { isValidEmail, isValidPassword } from "../utils/validation";
-import { handleSetError } from "../utils/error-handler";
-import axios from "axios";
+import AuthError from "../components/auth/AuthError";
+import { useState } from "react";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({
-    errorState: false,
-    errorName: "",
-    errorMsg: "",
+  const [errors, setError] = useState({
+    name: "",
+    email: "",
+    password: "",
   });
 
   let signIn = async () => {
-    if (name == "") {
-      handleSetError(true, "emptyName", "Please enter your name.", setError);
-    } else if (email == "")
-      handleSetError(true, "emptyEmail", "Please enter your email.", setError);
-    else if (password == "")
-      handleSetError(
-        true,
-        "emptyPassword",
-        "Please enter your password.",
-        setError
-      );
-    else {
-      try {
-        let user = await axios.post(
-          "http://localhost:8080/opportunex/api/v1/user/signup",
-          {
-            name,
-            email,
-            password,
-          }
-        );
-      } catch (error) {
-        const { data } = error.response;
-        console.log("ERR : ", data);
-      }
-
-      setName("");
-      setEmail("");
-      setPassword("");
-    }
+    if (errors.name || errors.email || errors.password) return;
+    else console.log("calling server...");
   };
-
-  // useEffect(() => console.log(error), [password, email]);
 
   return (
     <AuthWrapper
@@ -65,11 +34,11 @@ const Signup = () => {
         placeholder="Enter Name"
         type="name"
         callback={setName}
+        setError={setError}
         value={name}
+        validationMsg="Name can't be empty."
       />
-      {error.errorState && error.errorName == "emptyName" && (
-        <h3 className="text-red-600 mt-2"> {error.errorMsg}</h3>
-      )}
+      {errors.name && <AuthError error={errors.name} />}
       <AuthInput
         label="Email (required)"
         placeholder="Enter Email"
@@ -80,11 +49,7 @@ const Signup = () => {
         validationMsg="Please enter a valid email."
         value={email}
       />
-
-      {error.errorState &&
-        (error.errorName == "email" || error.errorName == "emptyEmail") && (
-          <h3 className="text-red-600 mt-2"> {error.errorMsg}</h3>
-        )}
+      {errors.email && <AuthError error={errors.email} />}
 
       <AuthInput
         label="Password (required)"
@@ -93,14 +58,11 @@ const Signup = () => {
         callback={setPassword}
         setError={setError}
         validator={isValidPassword}
-        validationMsg="Please enter a valid password"
+        validationMsg="Password should be 8 character long."
         value={password}
       />
-      {error.errorState &&
-        (error.errorName == "password" ||
-          error.errorName == "emptyPassword") && (
-          <h3 className="text-red-600 mt-2"> {error.errorMsg}</h3>
-        )}
+      {errors.password && <AuthError error={errors.password} />}
+
       <AuthButton btn_name="Create Account" callback={signIn} />
       <AuthLabel label_name="Already have an account" to="/login" />
     </AuthWrapper>
