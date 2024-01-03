@@ -18,7 +18,15 @@ const Signup = () => {
   });
 
   let signIn = async () => {
-    if (errors.name || errors.email || errors.password) return;
+    if (
+      errors.name ||
+      errors.email ||
+      errors.password ||
+      !name ||
+      !email ||
+      !password
+    )
+      return;
     else console.log("calling server...");
   };
 
