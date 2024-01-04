@@ -3,9 +3,16 @@ import AuthWrapper from "../components/auth/AuthWrapper";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLabel from "../components/auth/AuthLabel";
-import { isValidEmail, isValidPassword } from "../utils/validation";
+import {
+  isEmptyInput,
+  isValidEmail,
+  isValidPassword,
+  validateInputs,
+} from "../utils/validation";
 import AuthError from "../components/auth/AuthError";
 import { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -17,17 +24,31 @@ const Signup = () => {
     password: "",
   });
 
+  const state = useSelector(state=>state);
+  console.log(state);
   let signIn = async () => {
     if (
-      errors.name ||
-      errors.email ||
-      errors.password ||
-      !name ||
-      !email ||
-      !password
+      isEmptyInput(name, "name", setError) ||
+      isEmptyInput(email, "email", setError) ||
+      isEmptyInput(password, "password", setError)
     )
       return;
-    else console.log("calling server...");
+    else if (errors.name || errors.email || errors.password) return;
+    else {
+      let user = { name, email, password };
+      try {
+        let data = await axios.post(
+          "http://localhost:8080/opportunex/api/v1/user/signup",
+          user
+        );
+        console.log(data);
+      } catch (error) {
+        console.log("ERROR : ", error);
+        console.log(
+          "Oops! We're unable to connect to our services at the moment"
+        );
+      }
+    }
   };
 
   return (

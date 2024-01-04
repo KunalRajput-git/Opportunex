@@ -10,6 +10,15 @@ export const isValidPassword = (passwd) => {
   return false;
 };
 
+export const isEmptyInput = (userInput, type, setError) => {
+  if (userInput.trim() == "") {
+    setError((prevState) => {
+      return { ...prevState, [type]: `${type} can't be empty.` };
+    });
+    return true;
+  }
+};
+
 export const validateInputs = (
   userInput,
   type,
