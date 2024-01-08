@@ -5,8 +5,16 @@ import { ArrowRightShort, Binoculars } from "react-bootstrap-icons";
 import CompaniesFeatures from "./landing/CompaniesFeatures";
 import TrackerFeatures from "./landing/TrackerFeatures";
 import { NavLink } from "react-router-dom";
+import { getFromLocalStorage } from "../utils/localstorage";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  let { loggedin, user } = useSelector((state) => state.authSlice);
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedin);
+  useEffect(() => {
+    setIsLoggedIn(loggedin);
+  }, []);
   return (
     <>
       <Navbar />
@@ -21,13 +29,15 @@ const Home = () => {
           </p>
 
           <div className="mt-4 flex flex-col md:flex-row gap-4 md:items-center justify-start">
-            <NavLink
-              to="/signup"
-              className=" bg-indigo-600  text-white  py-5 px-6 rounded-md  tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
-            >
-              Get Started
-              <ArrowRightShort size={32} />
-            </NavLink>
+            {!isLoggedIn && (
+              <NavLink
+                to="/signup"
+                className=" bg-indigo-600  text-white  py-5 px-6 rounded-md  tracking-wider duration-200 lg:text-xl focus:outline-none focus:ring-2 focus:ring-indigo-750 focus:border-transparent flex items-center gap-2 font-medium"
+              >
+                Get Started
+                <ArrowRightShort size={32} />
+              </NavLink>
+            )}
 
             <NavLink
               to="/companies"

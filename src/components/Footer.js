@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   let date = new Date();
+  let { loggedin } = useSelector((state) => state.authSlice);
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedin);
   return (
     <footer class="py-12  border-t-2">
       <div className="w-11/12 flex flex-col md:flex-row justify-between font-semibold m-auto">
@@ -26,13 +30,25 @@ const Footer = () => {
               <li>
                 <NavLink to="/companies"> Companies </NavLink>
               </li>
-              <li>
-                {" "}
-                <NavLink to="/tracker"> Tracker </NavLink>
-              </li>
-              <Link to="/profile">
-                <li>Profile</li>
-              </Link>
+              {isLoggedIn ? (
+                <>
+                  <li>
+                    <NavLink to="/tracker">Tracker</NavLink>
+                  </li>
+                  <li>
+                    <Link to="/profile">Profile</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                  <li>
+                    <Link to="/signup">Signup</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -92,7 +108,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="mt-12 text-gray-500 text-lg w-11/12 m-auto text-center">
-        Copyright © 2022 - {date.getFullYear()}. Made with ❤ by{" "}
+        Copyright © 2023 - {date.getFullYear()}. Made with ❤ by{" "}
         <span className="text-black font-semibold">Kunal Rajput</span>.
         Illustrations from Glazestock
       </p>

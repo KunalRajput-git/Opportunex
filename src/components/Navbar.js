@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { ArrowRightShort, BoxArrowInRight, List } from "react-bootstrap-icons";
 import { Link, NavLink } from "react-router-dom";
+import { getFromLocalStorage } from "../utils/localstorage";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isLogin] = useState(false);
-
+  let { loggedin } = useSelector((state) => state.authSlice);
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedin);
   let menuToggleHandler = () => {
     if (window.innerWidth > 768) {
       setIsOpen(true);
@@ -13,10 +15,6 @@ const Navbar = () => {
       setIsOpen(false);
     }
   };
-
-  useEffect(() => {
-    menuToggleHandler();
-  }, []);
 
   window.addEventListener("resize", menuToggleHandler);
 
@@ -47,36 +45,38 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? `text-blue-700 font-bold ${
-                    isLogin ? "text-xl" : "lg:text-xl"
+                    isLoggedIn ? "text-xl" : "lg:text-xl"
                   }`
                 : `hover:text-indigo-600  tracking-wider ${
-                    isLogin ? "text-xl" : "lg:text-xl"
+                    isLoggedIn ? "text-xl" : "lg:text-xl"
                   } text-gray-700`
             }
           >
             Companies
           </NavLink>{" "}
-          <NavLink
-            to="/tracker"
-            className={({ isActive }) =>
-              isActive
-                ? `text-blue-700 font-bold ${
-                    isLogin ? "text-xl" : "lg:text-xl"
-                  }`
-                : `hover:text-indigo-600  tracking-wider ${
-                    isLogin ? "text-xl" : "lg:text-xl"
-                  } text-gray-700`
-            }
-          >
-            Tracker
-          </NavLink>
-          {isLogin ? (
-            <NavLink
-              to="/profile"
-              className="border p-4 rounded-full font-semibold  text-gray-700 flex items-center justify-center  bg-center bg-no-repeat bg-cover w-12 h-12"
-            >
-              <h1>K</h1>
-            </NavLink>
+          {isLoggedIn ? (
+            <>
+              <NavLink
+                to="/tracker"
+                className={({ isActive }) =>
+                  isActive
+                    ? `text-blue-700 font-bold ${
+                        isLoggedIn ? "text-xl" : "lg:text-xl"
+                      }`
+                    : `hover:text-indigo-600  tracking-wider ${
+                        isLoggedIn ? "text-xl" : "lg:text-xl"
+                      } text-gray-700`
+                }
+              >
+                Tracker
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className="border p-4 rounded-full font-semibold  text-gray-700 flex items-center justify-center  bg-center bg-no-repeat bg-cover w-12 h-12"
+              >
+                <h1>K</h1>
+              </NavLink>
+            </>
           ) : (
             <>
               <NavLink

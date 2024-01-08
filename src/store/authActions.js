@@ -1,19 +1,42 @@
-export const singup = (user, setError) => async (dispatch) => {
+import axios from "axios";
+import { authActions } from "./authSlice";
+import { redirect, useNavigate } from "react-router-dom";
+
+export const singup = (user, setIsLoading, setReqError) => async (dispatch) => {
   try {
-    const { data } = await axios.post("user", user);
-    if (data.statusCode == 200) {
-      const userData = {};
-      if (data.data.statusCode == 405) {
-        setError(true);
-      } else if (data.data.name) {
-        dispatch(loginActions.setLoggedIn({ loggedIn: true, userData }));
-      } else {
-        dispatch(loginActions.setGetName({ userData }));
-      }
-    } else if (data.statusCode == 400) {
-      console.log("error");
+    await axios.post("user/signup", user);
+    setIsLoading(false);
+  } catch (error) {
+    setIsLoading(false);
+    const { response } = error;
+    if (response) {
+      setReqError(response.data.error.message);
+    } else {
+      setReqError(
+        "Oops! We're unable to connect to our services at the moment :("
+      );
     }
-  } catch ({ ...error }) {
-    dispatch(loginActions.setLoginError({ loggedIn: false, error }));
   }
 };
+
+export const signin =
+  (user, setIsLoading, setReqError, navigate) => async (dispatch) => {
+    try {
+      const { data } = await axios.post("user/signin", user);
+      setIsLoading(false);
+      data.data.loggedin = true;
+      dispatch(authActions.setUser(data.data));
+      navigate("/tracker");
+    } catch (error) {
+      setIsLoading(false);
+      const { response } = error;
+      if (response) {
+        console.log("ERROR : ", response);
+        setReqError(response.data.error.message);
+      } else {
+        setReqError(
+          "Oops! We're unable to connect to our services at the moment :("
+        );
+      }
+    }
+  };

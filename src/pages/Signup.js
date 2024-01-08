@@ -7,26 +7,26 @@ import {
   isEmptyInput,
   isValidEmail,
   isValidPassword,
-  validateInputs,
 } from "../utils/validation";
 import AuthError from "../components/auth/AuthError";
 import { useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { singup } from "../store/authActions";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [errors, setError] = useState({
     name: "",
     email: "",
     password: "",
   });
+  const [reqError, setReqError] = useState("");
+  const dispatch = useDispatch();
 
-  const state = useSelector(state=>state);
-  console.log(state);
-  let signIn = async () => {
+  let registration = async () => {
     if (
       isEmptyInput(name, "name", setError) ||
       isEmptyInput(email, "email", setError) ||
@@ -36,18 +36,9 @@ const Signup = () => {
     else if (errors.name || errors.email || errors.password) return;
     else {
       let user = { name, email, password };
-      try {
-        let data = await axios.post(
-          "http://localhost:8080/opportunex/api/v1/user/signup",
-          user
-        );
-        console.log(data);
-      } catch (error) {
-        console.log("ERROR : ", error);
-        console.log(
-          "Oops! We're unable to connect to our services at the moment"
-        );
-      }
+      setIsLoading(true);
+      setReqError("");
+      dispatch(singup(user, setIsLoading, setReqError));
     }
   };
 
@@ -58,6 +49,11 @@ const Signup = () => {
       sub_heading="Sign up continue"
       alt="welcome_img"
     >
+      {reqError && (
+        <h1 className="text-red-600 font-bold mt-1 bg-red-200 p-2 px-4 w-max rounded-md">
+          {reqError}{" "}
+        </h1>
+      )}
       <AuthInput
         label="Name (required)"
         placeholder="Enter Name"
@@ -92,7 +88,11 @@ const Signup = () => {
       />
       {errors.password && <AuthError error={errors.password} />}
 
-      <AuthButton btn_name="Create Account" callback={signIn} />
+      <AuthButton
+        btn_name="Create Account"
+        callback={registration}
+        isLoading={isLoading}
+      />
       <AuthLabel label_name="Already have an account" to="/login" />
     </AuthWrapper>
   );
