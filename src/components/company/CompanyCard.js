@@ -7,11 +7,15 @@ import {
   Heart,
   HeartFill,
   InfoCircleFill,
+  PlusCircle,
 } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "react-tooltip";
+import { companyActions } from "../../store/companiesSlice";
 
 function CompanyCard({ company, onCompanyCardClickHandler }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const dispatch = useDispatch();
   let statusColors = {
     applied: "bg-orange-200",
     scheduled: "bg-blue-200",
@@ -20,32 +24,43 @@ function CompanyCard({ company, onCompanyCardClickHandler }) {
     selected: "bg-teal-200",
   };
 
+  const companyState = useSelector((state) => state.companySlice);
+  const { id } = companyState.selectedCompany[0];
+
+  const onCardClickHandler = () => {
+    dispatch(companyActions.setSelectedCompany(company.id));
+  };
+  // border-gray-300
   return (
     <div
-      className="relative w-full mt-4 p-4 pr-12 rounded-lg text-gray-700 bg-white flex justify-between border items-center border-gray-300 
-      hover:shadow-lg duration-300 cursor-pointer"
-      onClick={onCompanyCardClickHandler}
+      className={`relative w-full mt-4 p-4 pr-12 rounded-lg text-gray-700 bg-white flex justify-between items-center hover:shadow-lg duration-300 cursor-pointer ${
+        id === company.id ? "border-4 border-indigo-600 shadow-2xl" : "border"
+      }`}
+      // onClick={onCompanyCardClickHandler}
+      onClick={onCardClickHandler}
     >
-      <div
+      {/* <div
         className="absolute right-2 text-xs top-2 text-red-600 cursor-pointer"
         data-tooltip-id="my-tooltip"
         data-tooltip-content="Under Verification!"
       >
         <InfoCircleFill size="18" />
         <Tooltip id="my-tooltip" />
-      </div>
+      </div> */}
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 ">
         <div className="border w-12 h-12 rounded-md flex justify-center items-center">
           <img src={company.company_logo} className="w-3/5" />
         </div>
         <div>
           <div className="flex items-center">
-            <h1 className="font-semibold text-lg line-clamp-1 text-indigo-600">
-              {company.company_name}
+            <h1 className="font-semibold text-lg line-clamp-1 text-indigo-600 capitalize">
+              {company.name}
             </h1>
           </div>
-          <h1 className="italic text-sm">{company.company_type}</h1>
+          <h1 className="italic text-xs font-bold capitalize">
+            {company.type}
+          </h1>
         </div>
       </div>
 
@@ -59,36 +74,19 @@ function CompanyCard({ company, onCompanyCardClickHandler }) {
           }
           px-4 py-2 rounded-full font-semibold`}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-hourglass-split"
-            viewBox="0 0 16 16"
-          >
-            <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z" />
-          </svg>
           <h1 className=" sm:block text-sm capitalize">{company.status}</h1>
         </div>
       </div>
       <div className="flex gap-3">
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          fill="currentColor"
-          class="bi bi-plus-circle"
-          viewBox="0 0 16 16"
+        {<PlusCircle size="22" />}
+        <Heart size="22" />
+        <a
+          href={company.careerPageUrl}
+          target="_blank"
+          onClick={(e) => e.stopPropagation()}
         >
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-        </svg> */}
-
-        <DashCircle size="22" />
-        {/* <Heart size="22" color="royalblue" /> */}
-        <HeartFill size="22" color="#ff7675" />
-        <ArrowUpRightCircle size="22" />
+          <ArrowUpRightCircle size="22" />
+        </a>
       </div>
     </div>
   );

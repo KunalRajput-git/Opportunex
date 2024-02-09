@@ -11,7 +11,7 @@ import {
 import AuthError from "../components/auth/AuthError";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { singup } from "../store/authActions";
+import { createAccount } from "../store/authThunks";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ const Signup = () => {
   const [reqError, setReqError] = useState("");
   const dispatch = useDispatch();
 
-  let registration = async () => {
+  let signupHandler = async () => {
     if (
       isEmptyInput(name, "name", setError) ||
       isEmptyInput(email, "email", setError) ||
@@ -38,7 +38,7 @@ const Signup = () => {
       let user = { name, email, password };
       setIsLoading(true);
       setReqError("");
-      dispatch(singup(user, setIsLoading, setReqError));
+      dispatch(createAccount(user, setIsLoading, setReqError));
     }
   };
 
@@ -90,7 +90,7 @@ const Signup = () => {
 
       <AuthButton
         btn_name="Create Account"
-        callback={registration}
+        callback={signupHandler}
         isLoading={isLoading}
       />
       <AuthLabel label_name="Already have an account" to="/login" />

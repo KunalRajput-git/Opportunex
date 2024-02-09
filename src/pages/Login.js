@@ -11,8 +11,9 @@ import {
 } from "../utils/validation";
 import AuthError from "../components/auth/AuthError";
 import { useDispatch, useSelector } from "react-redux";
-import { signin } from "../store/authActions";
+
 import { useNavigate } from "react-router-dom";
+import { login } from "../store/authThunks";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  let signinHandler = async () => {
+  let loginHandler = async () => {
     if (
       isEmptyInput(email, "email", setError) ||
       isEmptyInput(password, "password", setError)
@@ -37,7 +38,7 @@ const Login = () => {
       let user = { email, password };
       setIsLoading(true);
       setReqError("");
-      dispatch(signin(user, setIsLoading, setReqError, navigate));
+      dispatch(login(user, setIsLoading, setReqError, navigate));
     }
   };
   return (
@@ -78,7 +79,7 @@ const Login = () => {
       <AuthLabel label_name="Forgot Password" to="/forgot-password" />
       <AuthButton
         btn_name="Login"
-        callback={signinHandler}
+        callback={loginHandler}
         isLoading={isLoading}
       />
       <AuthLabel label_name="Don't have an account yet" to="/signup" />

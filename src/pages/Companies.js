@@ -3,11 +3,17 @@ import Navbar from "../components/Navbar";
 import Filter from "../components/Filter";
 import CompanyContainer from "../components/company/CompanyContainer";
 import CompanyOverview from "../components/company/CompanyOverview";
+import { fetchCompanies } from "../store/companiesThunks";
+import { useDispatch, useSelector } from "react-redux";
+
 const Companies = () => {
   const [isCompanyOverviewVisible, setIsCompanyOverviewVisible] =
     useState(false);
   const [isCompanyContainerVisible, setIsCompanyContainerVisible] =
     useState(true);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const onCompanyCardClickHandler = () => {
     if (window.innerWidth < 768) {
@@ -19,6 +25,14 @@ const Companies = () => {
     setIsCompanyOverviewVisible(false);
     setIsCompanyContainerVisible(true);
   };
+
+  const companyState = useSelector((state) => state.companySlice);
+
+  useEffect(() => {
+    dispatch(fetchCompanies(setIsLoading));
+  }, []);
+
+  console.log(companyState);
 
   return (
     <>
@@ -49,14 +63,17 @@ const Companies = () => {
 
         <div className="flex h-full">
           <CompanyContainer
+            isLoading={isLoading}
             isCompanyContainerVisible={isCompanyContainerVisible}
             onCompanyCardClickHandler={onCompanyCardClickHandler}
           />
 
-          <CompanyOverview
-            isCompanyOverviewVisible={isCompanyOverviewVisible}
-            onViewListClickHandler={onViewListClickHandler}
-          />
+          {!isLoading && !companyState.error && (
+            <CompanyOverview
+              isCompanyOverviewVisible={isCompanyOverviewVisible}
+              onViewListClickHandler={onViewListClickHandler}
+            />
+          )}
         </div>
       </div>
     </>
