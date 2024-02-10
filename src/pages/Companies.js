@@ -5,6 +5,7 @@ import CompanyContainer from "../components/company/CompanyContainer";
 import CompanyOverview from "../components/company/CompanyOverview";
 import { fetchCompanies } from "../store/companiesThunks";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Companies = () => {
   const [isCompanyOverviewVisible, setIsCompanyOverviewVisible] =
@@ -14,7 +15,7 @@ const Companies = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const onCompanyCardClickHandler = () => {
     if (window.innerWidth < 768) {
       setIsCompanyOverviewVisible(true);
@@ -27,12 +28,18 @@ const Companies = () => {
   };
 
   const companyState = useSelector((state) => state.companySlice);
+  const authState = useSelector((state) => state.authSlice);
 
   useEffect(() => {
-    dispatch(fetchCompanies(setIsLoading));
-  }, []);
-
-  console.log(companyState);
+    dispatch(
+      fetchCompanies(
+        setIsLoading,
+        authState.user.token,
+        companyState.currentPageNo,
+        navigate
+      )
+    );
+  }, [companyState.currentPageNo]);
 
   return (
     <>

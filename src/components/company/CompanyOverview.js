@@ -1,7 +1,6 @@
 import { BoxArrowUpRight, Heart, PlusCircle } from "react-bootstrap-icons";
 import AboutCompany from "./AboutCompany";
 import CompanyHeader from "./CompanyHeader";
-import OverviewNav from "./OverviewNav";
 import { useSelector } from "react-redux";
 
 const CompanyOverview = ({
@@ -38,7 +37,6 @@ const CompanyOverview = ({
         !isCompanyOverviewVisible && "hidden"
       } md:block w-full md:w-3/5 lg:w-[67%] md:overflow-y-scroll`}
     >
-      <OverviewNav onViewListClickHandler={onViewListClickHandler} />
       <CompanyHeader />
       <div className="w-11/12 m-auto flex gap-4 -mt-4 flex-wrap">
         <button

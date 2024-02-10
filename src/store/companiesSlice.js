@@ -1,13 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  getFromLocalStorage,
-  removeFromLocalStorage,
-  setToLocalStorage,
-} from "../utils/localstorage";
 
 const initialState = {
   companies: [],
   selectedCompany: [],
+  totalCompanies: 0,
+  currentPageNo: 1,
   error: false,
 };
 
@@ -16,8 +13,9 @@ const companySlice = createSlice({
   initialState,
   reducers: {
     setCompanies(state, action) {
-      state.companies = action.payload;
-      state.selectedCompany = [action.payload[0]];
+      state.companies = action.payload.companies;
+      state.selectedCompany = [action.payload.companies[0]];
+      state.totalCompanies = action.payload.totalCompanies;
       return state;
     },
     setSelectedCompany(state, action) {
@@ -26,6 +24,15 @@ const companySlice = createSlice({
       );
       return state;
     },
+    prevPage(state) {
+      state.currentPageNo -= 1;
+      return state;
+    },
+    nextPage(state) {
+      state.currentPageNo += 1;
+      return state;
+    },
+
     setError(state, action) {
       state.error = action.payload;
       return state;
