@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   companies: [],
   selectedCompany: [],
+  searchedCompanies: [],
   totalCompanies: 0,
   currentPageNo: 1,
   error: false,
@@ -18,10 +19,16 @@ const companySlice = createSlice({
       state.totalCompanies = action.payload.totalCompanies;
       return state;
     },
+    setSearchedCompanies(state, action) {
+      state.searchedCompanies = action.payload;
+      return state;
+    },
     setSelectedCompany(state, action) {
-      state.selectedCompany = state.companies.filter(
-        (company) => company.id === action.payload
+      let isExist = state.companies.some(
+        (company) => company.id === action.payload.id
       );
+      if (!isExist) state.companies.unshift(action.payload);
+      state.selectedCompany = [action.payload];
       return state;
     },
     prevPage(state) {

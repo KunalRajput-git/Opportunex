@@ -18,6 +18,10 @@ const Navbar = () => {
 
   window.addEventListener("resize", menuToggleHandler);
 
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
+
   return (
     <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4  md:py-5 md:fixed top-0 left-0 z-10 border-b-2">
       <div className="flex justify-between items-center ">

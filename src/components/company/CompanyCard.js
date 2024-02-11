@@ -28,7 +28,7 @@ function CompanyCard({ company, onCompanyCardClickHandler }) {
   const { id } = companyState.selectedCompany[0];
 
   const onCardClickHandler = () => {
-    dispatch(companyActions.setSelectedCompany(company.id));
+    dispatch(companyActions.setSelectedCompany(company));
   };
   // border-gray-300
   return (

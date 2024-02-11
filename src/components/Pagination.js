@@ -13,8 +13,10 @@ const Pagination = () => {
   if (totalCompanies)
     totalPages = Math.ceil(totalCompanies / COMPANIES_PER_REQUEST);
   const companyState = useSelector((state) => state.companySlice);
+  const isUserLoggedin = useSelector((state) => state.authSlice.loggedin);
 
   const onNextClickHandler = () => dispatch(companyActions.nextPage());
+
   const onPrevClickHandler = () => dispatch(companyActions.prevPage());
 
   return (
@@ -22,7 +24,7 @@ const Pagination = () => {
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"
         onClick={onPrevClickHandler}
-        disabled={companyState.currentPageNo == 1}
+        disabled={companyState.currentPageNo == 1 || !isUserLoggedin}
       >
         <ArrowLeft size="18" />
         Prev
@@ -33,7 +35,7 @@ const Pagination = () => {
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"
         onClick={onNextClickHandler}
-        disabled={companyState.currentPageNo == totalPages}
+        disabled={companyState.currentPageNo == totalPages || !isUserLoggedin}
       >
         Next
         <ArrowRight size="18" />
