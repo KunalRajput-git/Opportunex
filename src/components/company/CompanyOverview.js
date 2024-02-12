@@ -3,6 +3,7 @@ import AboutCompany from "./AboutCompany";
 import CompanyHeader from "./CompanyHeader";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { popConfigs } from "../../configs/popconfig";
 
 const CompanyOverview = ({
   isCompanyOverviewVisible,
@@ -16,21 +17,12 @@ const CompanyOverview = ({
     companyState.selectedCompany[0];
   console.log(authState);
 
-  const onPopUp = () => {
+  let onPopUp = () => {
     let width = window.height;
     let height = window.width;
     let left = 0;
     let top = 0;
-    let options =
-      "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=" +
-      width +
-      ", height=" +
-      height +
-      ", top=" +
-      top +
-      ", left=" +
-      left;
-
+    let options = popConfigs(width, height, left, top);
     window.open(careerPageUrl, "Popup", options);
   };
   return (
@@ -65,7 +57,7 @@ const CompanyOverview = ({
           <PlusCircle />
         </button>
         <button className="text-sm md:text-lg border p-2 md:p-3 rounded-md flex items-center gap-4">
-          Favourite this
+          {/* Favourite this */}
           <Heart />
         </button>
       </div>

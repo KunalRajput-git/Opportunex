@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 const CompanyContainer = ({
   onCompanyCardClickHandler,
   isCompanyContainerVisible,
-  isLoading,
 }) => {
   const companyState = useSelector((state) => state.companySlice);
 
@@ -16,18 +15,19 @@ const CompanyContainer = ({
       } md:block w-full md:w-2/5 lg:w-1/3 md:overflow-y-scroll bg--50 border-r-2 bg-gray-100`}
     >
       <div className="w-[95%] m-auto pb-4">
-        {companyState.error ? (
-          <h1 className="w-11/12 m-auto mt-40">{companyState.error}</h1>
-        ) : isLoading ? (
+        {companyState.error && (
+          <h1 className="w-11/12 m-auto mt-8 mb-8">{companyState.error}</h1>
+        )}
+        {companyState.isLoading ? (
           <>
             <CompanCardSkeleton />
+            {/* <CompanCardSkeleton />
             <CompanCardSkeleton />
             <CompanCardSkeleton />
-            <CompanCardSkeleton />
-            <CompanCardSkeleton />
+            <CompanCardSkeleton /> */}
           </>
         ) : (
-          companyState.companies?.map((company) => (
+          companyState?.companies?.map((company) => (
             <CompanyCard
               company={company}
               onCompanyCardClickHandler={onCompanyCardClickHandler}

@@ -14,7 +14,7 @@ const Companies = () => {
   const [isCompanyContainerVisible, setIsCompanyContainerVisible] =
     useState(true);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onCompanyCardClickHandler = () => {
@@ -32,15 +32,15 @@ const Companies = () => {
   const authState = useSelector((state) => state.authSlice);
 
   useEffect(() => {
-    dispatch(
-      fetchCompanies(
-        setIsLoading,
-        authState.user.token,
-        companyState.currentPageNo,
-        navigate
-      )
-    );
-  }, [companyState.currentPageNo]);
+    if (!companyState.companies.length)
+      dispatch(
+        fetchCompanies(
+          authState.user.token,
+          companyState.currentPageNo,
+          navigate
+        )
+      );
+  }, []);
 
   return (
     <>
@@ -54,12 +54,11 @@ const Companies = () => {
 
         <div className="flex h-full">
           <CompanyContainer
-            isLoading={isLoading}
             isCompanyContainerVisible={isCompanyContainerVisible}
             onCompanyCardClickHandler={onCompanyCardClickHandler}
           />
 
-          {!isLoading && !companyState.error && (
+          {!companyState.isLoading && !companyState.error && (
             <CompanyOverview
               isCompanyOverviewVisible={isCompanyOverviewVisible}
               onViewListClickHandler={onViewListClickHandler}

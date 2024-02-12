@@ -4,6 +4,7 @@ const initialState = {
   companies: [],
   selectedCompany: [],
   searchedCompanies: [],
+  isLoading: true,
   totalCompanies: 0,
   currentPageNo: 1,
   error: false,
@@ -17,6 +18,8 @@ const companySlice = createSlice({
       state.companies = action.payload.companies;
       state.selectedCompany = [action.payload.companies[0]];
       state.totalCompanies = action.payload.totalCompanies;
+      state.error = false;
+      state.isLoading = false;
       return state;
     },
     setSearchedCompanies(state, action) {
@@ -33,15 +36,18 @@ const companySlice = createSlice({
     },
     prevPage(state) {
       state.currentPageNo -= 1;
+      state.isLoading = true;
       return state;
     },
     nextPage(state) {
       state.currentPageNo += 1;
+      state.isLoading = true;
       return state;
     },
 
     setError(state, action) {
       state.error = action.payload;
+      state.isLoading = false;
       return state;
     },
   },

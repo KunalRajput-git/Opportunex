@@ -1,10 +1,13 @@
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { companyActions } from "../store/companiesSlice";
+import { fetchCompanies } from "../store/companiesThunks";
+import { useNavigate } from "react-router-dom";
 
 const COMPANIES_PER_REQUEST = 5;
 
 const Pagination = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const totalCompanies = useSelector(
     (state) => state.companySlice?.totalCompanies
@@ -13,18 +16,46 @@ const Pagination = () => {
   if (totalCompanies)
     totalPages = Math.ceil(totalCompanies / COMPANIES_PER_REQUEST);
   const companyState = useSelector((state) => state.companySlice);
-  const isUserLoggedin = useSelector((state) => state.authSlice.loggedin);
+  const authState = useSelector((state) => state.authSlice);
 
-  const onNextClickHandler = () => dispatch(companyActions.nextPage());
+  let isPrevDisabled =
+    companyState.currentPageNo == 1 ||
+    !authState.user.loggedin ||
+    companyState.error;
 
-  const onPrevClickHandler = () => dispatch(companyActions.prevPage());
+  let isNextDisabled =
+    companyState.currentPageNo == totalPages ||
+    !authState.user.loggedin ||
+    companyState.error;
+
+  const onNextClickHandler = () => {
+    dispatch(companyActions.nextPage());
+    dispatch(
+      fetchCompanies(
+        authState.user.token,
+        companyState.currentPageNo + 1,
+        navigate
+      )
+    );
+  };
+
+  const onPrevClickHandler = () => {
+    dispatch(companyActions.prevPage());
+    dispatch(
+      fetchCompanies(
+        authState.user.token,
+        companyState.currentPageNo - 1,
+        navigate
+      )
+    );
+  };
 
   return (
     <div className="flex items-center justify-between mt-6 border-gray-400  px-4 ">
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"
         onClick={onPrevClickHandler}
-        disabled={companyState.currentPageNo == 1 || !isUserLoggedin}
+        disabled={isPrevDisabled}
       >
         <ArrowLeft size="18" />
         Prev
@@ -35,7 +66,7 @@ const Pagination = () => {
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"
         onClick={onNextClickHandler}
-        disabled={companyState.currentPageNo == totalPages || !isUserLoggedin}
+        disabled={isNextDisabled}
       >
         Next
         <ArrowRight size="18" />
