@@ -4,7 +4,7 @@ import Filter from "../Filter";
 const TrackerHeader = () => {
   return (
     <>
-      <div className="p-4 gap-4 md:gap-0 flex justify-between items-center md:pt-24 lg:pt-28">
+      <div className="p-4 gap-4 md:gap-0 flex justify-between items-center">
         <div className="flex-shrink-0">
           <h1 className="text-xl font-semibold">My Applications</h1>
           <p className="text-gray-700 text-sm font-semibold">

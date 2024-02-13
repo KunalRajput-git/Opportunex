@@ -58,7 +58,7 @@ const Companies = () => {
             onCompanyCardClickHandler={onCompanyCardClickHandler}
           />
 
-          {!companyState.isLoading && !companyState.error && (
+          {0 < companyState.companies.length && (
             <CompanyOverview
               isCompanyOverviewVisible={isCompanyOverviewVisible}
               onViewListClickHandler={onViewListClickHandler}

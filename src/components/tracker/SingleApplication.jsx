@@ -3,33 +3,50 @@ import NO_APPLICATION2 from "../../assets/no_application2.png";
 import Filter from "../Filter";
 import { useState } from "react";
 import TrackerInput from "./TrackerInput";
-import { PencilSquare, PlusSquareFill } from "react-bootstrap-icons";
+import {
+  Check2Circle,
+  PencilSquare,
+  PlusSquareFill,
+  Save2Fill,
+  SaveFill,
+} from "react-bootstrap-icons";
 
 const SingleApplication = () => {
   const [isEditable, setIsEditable] = useState(false);
+  {
+    /* <NoData
+          img={NO_APPLICATION2}
+          heading="Select an application from the right."
+          action_text="to create one."
+        /> */
+  }
+
   return (
     <>
-      {/* <NoData
-        img={NO_APPLICATION2}
-        heading="Select an application from the right."
-        action_text="to create one."
-      /> */}
-
-      <div className="w-[35%] text border-l-2  hidden lg:block h-screen ">
-        <div className="px-4 flex justify-between items-start mt-28">
-          <div>
-            <h1 className="  font-semibold text-xl">Job Application at</h1>
-            <h1 className="text-indigo-600 font-bold">Microsoft Corporation</h1>
+      <div className="w-2/5 h-screen">
+        <div className="h-full w-[95%] m-auto mt-4 rounded-md overflow-y-scroll border">
+          <div className="border-b-2 p-4 flex justify-between items-start">
+            <h1 className="font-bold text-indigo-600 text-lg">
+              Microsoft Corporation
+            </h1>
+            <div className="flex justify-between items-start">
+              {isEditable ? (
+                <button
+                  className="font-semibold rounded-sm text-gray-400"
+                  onClick={() => setIsEditable(false)}
+                >
+                  <Check2Circle size="24px" />
+                </button>
+              ) : (
+                <button
+                  className="font-semibold rounded-sm text-gray-400"
+                  onClick={() => setIsEditable(true)}
+                >
+                  <PencilSquare size="24px" />
+                </button>
+              )}
+            </div>
           </div>
-
-          <button
-            className="font-semibold rounded-sm"
-            onClick={() => setIsEditable(!isEditable)}
-          >
-            <PencilSquare size="24px" />
-          </button>
-        </div>
-        <div className="h-full w-[95%] m-auto mt-2 rounded-md overflow-y-scroll border">
           <div className="pt-2 px-6 bg-white">
             <div>
               <div className="mt-6 flex justify-between border-b-2">
