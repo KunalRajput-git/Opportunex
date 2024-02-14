@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   companies: [],
-  selectedCompany: [],
+  selectedCompany: {},
   searchedCompanies: [],
   isLoading: true,
   totalCompanies: 0,
   currentPageNo: 1,
+  isCompanyContainerVisble: true,
   error: false,
 };
 
@@ -16,7 +17,7 @@ const companySlice = createSlice({
   reducers: {
     setCompanies(state, action) {
       state.companies = action.payload.companies;
-      state.selectedCompany = [action.payload.companies[0]];
+      state.selectedCompany = { ...action.payload.companies[0] };
       state.totalCompanies = action.payload.totalCompanies;
       state.error = false;
       state.isLoading = false;
@@ -31,7 +32,7 @@ const companySlice = createSlice({
         (company) => company.id === action.payload.id
       );
       if (!isExist) state.companies.unshift(action.payload);
-      state.selectedCompany = [action.payload];
+      state.selectedCompany = { ...action.payload };
       return state;
     },
     prevPage(state) {
@@ -44,7 +45,9 @@ const companySlice = createSlice({
       state.isLoading = true;
       return state;
     },
-
+    setIsCompanyContainerVisible(state, action) {
+      state.isCompanyContainerVisble = action.payload;
+    },
     setError(state, action) {
       state.error = action.payload;
       state.isLoading = false;

@@ -10,11 +10,10 @@ import {
   PlusCircle,
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { Tooltip } from "react-tooltip";
 import { companyActions } from "../../store/companiesSlice";
+import { MOBILE_DEVICE_WIDTH } from "../../store/constants";
 
-function CompanyCard({ company, onCompanyCardClickHandler }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function CompanyCard({ company }) {
   const dispatch = useDispatch();
   let statusColors = {
     applied: "bg-orange-200",
@@ -25,9 +24,12 @@ function CompanyCard({ company, onCompanyCardClickHandler }) {
   };
 
   const companyState = useSelector((state) => state.companySlice);
-  const { id } = companyState.selectedCompany[0];
+  const { id } = companyState.selectedCompany && companyState.selectedCompany;
 
   const onCardClickHandler = () => {
+    if (window.innerWidth < MOBILE_DEVICE_WIDTH) {
+      dispatch(companyActions.setIsCompanyContainerVisible(false));
+    }
     dispatch(companyActions.setSelectedCompany(company));
   };
   // border-gray-300

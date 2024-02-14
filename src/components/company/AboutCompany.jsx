@@ -4,8 +4,7 @@ import SuggestBtn from "./SuggestBtn";
 const AboutCompany = () => {
   const companyState = useSelector((state) => state.companySlice);
   const { name, websiteUrl, size, description, foundedYear } =
-    companyState.selectedCompany[0];
-  console.log(companyState.selectedCompany[0]);
+    companyState.selectedCompany;
   return (
     <div className="w-11/12 m-auto mt-4">
       <h1 className="text-xl font-semibold capitalize">{name} Overview</h1>

@@ -8,6 +8,7 @@ const Search = () => {
   const companyState = useSelector((state) => state.companySlice);
   const authState = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
+
   const onSearchHandler = (searchtext) => {
     setSearchText(searchtext);
     if (searchtext == "") dispatch(companyActions.setSearchedCompanies([]));
@@ -24,7 +25,7 @@ const Search = () => {
   return (
     <div
       className={`${
-        false && "hidden"
+        !companyState.isCompanyContainerVisble && "hidden"
       } md:block lg:-mt-3 p-4 gap-4 md:gap-0 flex justify-between items-center md:pt-24 lg:pt-28`}
     >
       <div className="w-full relative">

@@ -3,24 +3,25 @@ import { ArrowRightShort, BoxArrowInRight, List } from "react-bootstrap-icons";
 import { Link, NavLink } from "react-router-dom";
 import { getFromLocalStorage } from "../utils/localstorage";
 import { useSelector } from "react-redux";
+import { MOBILE_DEVICE_WIDTH } from "../store/constants";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
   let { loggedin } = useSelector((state) => state.authSlice);
   const [isLoggedIn, setIsLoggedIn] = useState(loggedin);
   let menuToggleHandler = () => {
-    if (window.innerWidth > 768) {
+    if (MOBILE_DEVICE_WIDTH < window.innerWidth) {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
   };
 
-  window.addEventListener("resize", menuToggleHandler);
-
   useEffect(() => {
-    setIsOpen(true);
+    menuToggleHandler();
   }, []);
+
+  window.addEventListener("resize", menuToggleHandler);
 
   return (
     <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4  md:py-5 md:fixed top-0 left-0 z-10 border-b-2">

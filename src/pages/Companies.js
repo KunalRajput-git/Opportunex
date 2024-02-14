@@ -9,24 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Search from "../components/company/Search";
 
 const Companies = () => {
-  const [isCompanyOverviewVisible, setIsCompanyOverviewVisible] =
-    useState(false);
-  const [isCompanyContainerVisible, setIsCompanyContainerVisible] =
-    useState(true);
-
-  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onCompanyCardClickHandler = () => {
-    if (window.innerWidth < 768) {
-      setIsCompanyOverviewVisible(true);
-      setIsCompanyContainerVisible(false);
-    }
-  };
-  const onViewListClickHandler = () => {
-    setIsCompanyOverviewVisible(false);
-    setIsCompanyContainerVisible(true);
-  };
 
   const companyState = useSelector((state) => state.companySlice);
   const authState = useSelector((state) => state.authSlice);
@@ -47,23 +31,10 @@ const Companies = () => {
       <div className="md:h-screen overflow-hidden md:pb-56">
         <Navbar />
         <Search />
-        <Filter
-          mainHeading="Category"
-          isCompanyOverviewVisible={isCompanyOverviewVisible}
-        />
-
+        <Filter mainHeading="Category" />
         <div className="flex h-full">
-          <CompanyContainer
-            isCompanyContainerVisible={isCompanyContainerVisible}
-            onCompanyCardClickHandler={onCompanyCardClickHandler}
-          />
-
-          {0 < companyState.companies.length && (
-            <CompanyOverview
-              isCompanyOverviewVisible={isCompanyOverviewVisible}
-              onViewListClickHandler={onViewListClickHandler}
-            />
-          )}
+          <CompanyContainer />
+          {0 < companyState.companies.length && <CompanyOverview />}
         </div>
       </div>
     </>

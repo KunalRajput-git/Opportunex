@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { ChevronDown } from "react-bootstrap-icons";
 import { useOutsideClick } from "../hooks/useOutsideClick";
+import { useSelector } from "react-redux";
 
-const Filter = ({ isCompanyOverviewVisible, mainHeading, lists }) => {
+const Filter = ({ mainHeading, lists }) => {
   const [isDrop, setIsDrop] = useState(false);
   let filterModalNode = useOutsideClick(() => setIsDrop(false));
+  const companyState = useSelector((state) => state.companySlice);
   return (
     <div
       className={`${
-        isCompanyOverviewVisible && "hidden"
+        !companyState.isCompanyContainerVisble && "hidden"
       } flex-col md:flex md:flex-row`}
     >
       <div className="w-full md:w-2/5 lg:w-1/3 p-4  flex justify-between border border-r-0 border-l-0 relative">
