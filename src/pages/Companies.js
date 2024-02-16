@@ -28,7 +28,7 @@ const Companies = () => {
 
   return (
     <>
-      <div className="md:h-screen overflow-hidden md:pb-56">
+      <div className="md:h-screen overflow-hidden md:pb-60">
         <Navbar />
         <Search />
         <Filter mainHeading="Category" />
