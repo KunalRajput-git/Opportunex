@@ -8,12 +8,14 @@ import {
   HeartFill,
   InfoCircleFill,
   PlusCircle,
+  Subtract,
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { companyActions } from "../../store/companiesSlice";
 import { MOBILE_DEVICE_WIDTH } from "../../store/constants";
+import { Tooltip } from "react-tooltip";
 
-function CompanyCard({ company }) {
+function CompanyCard({ company, from }) {
   const dispatch = useDispatch();
   let statusColors = {
     applied: "bg-orange-200",
@@ -80,7 +82,11 @@ function CompanyCard({ company }) {
         </div>
       </div>
       <div className="flex gap-3">
-        {<PlusCircle size="22" />}
+        {from == "company" ? (
+          <PlusCircle size="22" title="add to watchlist" />
+        ) : (
+          <DashCircle size="22" title="remove from watchlist" />
+        )}
         <Heart size="22" />
         <a
           href={company.careerPageUrl}

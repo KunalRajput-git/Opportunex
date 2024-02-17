@@ -8,10 +8,10 @@ const Tracker = () => {
       <div className="h-screen overflow-hidden md:pt-20">
         <Navbar />
         <div className="flex h-full">
-          <div className="w-3/5 border-r-2 pt-2 h-full">
+          {/* <div className="w-3/5 border-r-2 pt-2 h-full">
             <TrackerHeader />
-            <UserApplications />
-          </div>
+            <UserApplications from="tracker" />
+          </div> */}
           <SingleApplication />
         </div>
       </div>

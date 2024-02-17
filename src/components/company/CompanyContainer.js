@@ -18,14 +18,14 @@ const CompanyContainer = () => {
         {companyState.isLoading ? (
           <>
             <CompanCardSkeleton />
-            {/* <CompanCardSkeleton />
             <CompanCardSkeleton />
             <CompanCardSkeleton />
-            <CompanCardSkeleton /> */}
+            <CompanCardSkeleton />
+            <CompanCardSkeleton />
           </>
         ) : (
           companyState?.companies?.map((company) => (
-            <CompanyCard company={company} />
+            <CompanyCard company={company} from="company" />
           ))
         )}
         {0 < companyState.companies.length && <Pagination />}
