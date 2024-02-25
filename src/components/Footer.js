@@ -33,7 +33,7 @@ const Footer = () => {
               {isLoggedIn ? (
                 <>
                   <li>
-                    <NavLink to="/tracker">Tracker</NavLink>
+                    <NavLink to="/tracker">Tracker <span className="text-yellow-700 bg-yellow-300 px-4 rounded-md">soon</span></NavLink>
                   </li>
                   <li>
                     <Link to="/profile">Profile</Link>

@@ -87,7 +87,6 @@ function CompanyCard({ company, from }) {
         ) : (
           <DashCircle size="22" title="remove from watchlist" />
         )}
-        <Heart size="22" />
         <a
           href={company.careerPageUrl}
           target="_blank"

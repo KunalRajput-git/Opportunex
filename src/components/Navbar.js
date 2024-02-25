@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRightShort, BoxArrowInRight, List } from "react-bootstrap-icons";
 import { Link, NavLink } from "react-router-dom";
-import { getFromLocalStorage } from "../utils/localstorage";
 import { useSelector } from "react-redux";
 import { MOBILE_DEVICE_WIDTH } from "../store/constants";
 
@@ -9,6 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
   let { loggedin } = useSelector((state) => state.authSlice);
   const [isLoggedIn, setIsLoggedIn] = useState(loggedin);
+  const { user } = useSelector((state) => state.authSlice);
+
   let menuToggleHandler = () => {
     if (MOBILE_DEVICE_WIDTH < window.innerWidth) {
       setIsOpen(true);
@@ -79,7 +80,7 @@ const Navbar = () => {
                 to="/profile"
                 className="border p-4 rounded-full font-semibold  text-gray-700 flex items-center justify-center  bg-center bg-no-repeat bg-cover w-12 h-12"
               >
-                <h1>K</h1>
+                <h1>{user.name[0].toUpperCase()}</h1>
               </NavLink>
             </>
           ) : (

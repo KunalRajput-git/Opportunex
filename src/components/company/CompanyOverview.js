@@ -51,12 +51,8 @@ const CompanyOverview = () => {
           <BoxArrowUpRight />
         </button>
         <button className="bg-indigo-200 px-4 py-2 text-indigo-600 font-semibold rounded-md flex gap-4 items-center text-sm md:text-lg">
-          Track
+          Watchlist
           <PlusCircle />
-        </button>
-        <button className="text-sm md:text-lg border p-2 md:p-3 rounded-md flex items-center gap-4">
-          {/* Favourite this */}
-          <Heart />
         </button>
       </div>
       {/* <div className="w-full border-t-2 mt-6"></div> */}

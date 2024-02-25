@@ -51,7 +51,7 @@ const Filter = ({ mainHeading, lists }) => {
           <div className="bg-indigo-200 w-8 h-8 rounded-full text-indigo-600 flex items-center justify-center">
             <h1 className="font-semibold">0</h1>
           </div>
-          <h1 className="text-gray-700 font-semibold">Favourite Companies</h1>
+          <h1 className="text-gray-700 font-semibold">Watchlist</h1>
         </div>
       </div>
     </div>
