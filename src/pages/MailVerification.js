@@ -3,9 +3,7 @@ import AuthInput from "../components/auth/AuthInput";
 import AuthWrapper from "../components/auth/AuthWrapper";
 import VERIFYMAIL_IMG from "../assets/verify_mail.png";
 const MailVerification = () => {
-  const onClickHandler = () => {
-    console.log("Mail Verification");
-  };
+  const onClickHandler = () => {};
   return (
     <>
       <AuthWrapper

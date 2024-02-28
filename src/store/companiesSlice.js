@@ -7,6 +7,7 @@ const initialState = {
   isLoading: true,
   totalCompanies: 0,
   currentPageNo: 1,
+  filterBy: "all",
   isCompanyContainerVisble: true,
   error: false,
 };
@@ -18,7 +19,7 @@ const companySlice = createSlice({
     setCompanies(state, action) {
       state.companies = action.payload.companies;
       state.selectedCompany = { ...action.payload.companies[0] };
-      state.totalCompanies = action.payload.totalCompanies;
+      state.totalCompanies = action.payload.totalCompaniesCount;
       state.error = false;
       state.isLoading = false;
       return state;
@@ -29,10 +30,15 @@ const companySlice = createSlice({
     },
     setSelectedCompany(state, action) {
       let isExist = state.companies.some(
-        (company) => company.id === action.payload.id
+        (company) => company._id === action.payload._id
       );
       if (!isExist) state.companies.unshift(action.payload);
       state.selectedCompany = { ...action.payload };
+      return state;
+    },
+    setFilterBy(state, action) {
+      state.filterBy = action.payload;
+      state.isLoading = true;
       return state;
     },
     prevPage(state) {

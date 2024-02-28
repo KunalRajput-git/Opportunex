@@ -6,7 +6,7 @@ const OverviewNav = () => {
   const dispatch = useDispatch();
   const companyState = useSelector((state) => state.companySlice);
   let currentIndex = companyState.companies.findIndex(
-    (company) => company.id === companyState.selectedCompany.id
+    (company) => company._id === companyState.selectedCompany._id
   );
 
   const onClickHandler = (index) => {
@@ -31,7 +31,7 @@ const OverviewNav = () => {
         >
           <ArrowLeft />
         </button>
-        <h1>{currentIndex + 1} of 5</h1>
+        <h1>{currentIndex + 1} of {companyState.companies.length}</h1>
         <button
           disabled={currentIndex + 1 == companyState.companies.length}
           className="p-2 rounded-md bg-indigo-600 text-white disabled:bg-indigo-400 disabled:cursor-not-allowed"

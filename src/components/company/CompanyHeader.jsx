@@ -8,10 +8,9 @@ const CompanyHeader = () => {
     size,
     description,
     foundedYear,
-    type,
-    founderName,
+    industry,
+    founder,
   } = companyState.selectedCompany;
-  console.log(companyState.selectedCompany);
   return (
     <div className="py-8">
       <div className="w-11/12 m-auto ">
@@ -19,7 +18,7 @@ const CompanyHeader = () => {
           <div className="w-1/2">
             <h1 className="text-lg md:text-2xl font-bold capitalize">{name}</h1>
             <h3 className="text-xs md:text-sm mt-1 italic text-gray-700 capitalize">
-              {type}
+              {industry}
             </h3>
           </div>
 
@@ -31,7 +30,7 @@ const CompanyHeader = () => {
               />
             </div> */}
             <div className="text-gray-700 mt-1  text-right">
-              <h1 className="text-sm md:text-lg capitalize">{founderName}</h1>
+              <h1 className="text-sm md:text-lg capitalize">{founder}</h1>
               <h1 className="text-xs md:text-sm italic capitalize">
                 Founder, {name}
               </h1>

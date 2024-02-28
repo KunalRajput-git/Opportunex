@@ -7,6 +7,7 @@ import { fetchCompanies } from "../store/companiesThunks";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Search from "../components/company/Search";
+import Pagination from "../components/Pagination";
 
 const Companies = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ const Companies = () => {
     if (!companyState.companies.length)
       dispatch(
         fetchCompanies(
+          authState.user._id,
+          "all",
           authState.user.token,
           companyState.currentPageNo,
           navigate
@@ -28,13 +31,40 @@ const Companies = () => {
 
   return (
     <>
-      <div className="md:h-screen overflow-hidden md:pb-60">
+      <div className="h-screen overflow-hidden flex flex-col -8 ">
         <Navbar />
         <Search />
-        <Filter mainHeading="Category" />
-        <div className="flex h-full">
-          <CompanyContainer />
-          {0 < companyState.companies.length && <CompanyOverview />}
+        <Filter
+          mainHeading="Category"
+          list={["all", "mnc", "startup", "watchlist"]}
+        />
+        <div className="flex flex-1 overflow-hidden">
+          <div
+            className={`${
+              !companyState.isCompanyContainerVisble && "hidden"
+            } flex w-full md:w-2/5 lg:w-1/3 md:flex border-r-2 relative flex-col bg-gray-50 `}
+          >
+            <div className="w-full overflow-scroll pb-20">
+              <CompanyContainer />
+            </div>
+            <Pagination />
+          </div>
+          <div
+            className={`${
+              companyState.isCompanyContainerVisble && "hidden"
+            }  w-full md:w-2/5 md:block lg:w-1/3 border-r-2 overflow-y-scroll flex-1`}
+          >
+            <div className="w-full overflow-scroll">
+              {companyState.selectedCompany._id ? (
+                <CompanyOverview />
+              ) : (
+                <h1 className="text-center mt-12">
+                  "This filter doesn't include any companies. Please consider
+                  trying other filters."
+                </h1>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </>

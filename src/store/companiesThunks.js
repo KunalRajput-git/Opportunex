@@ -4,9 +4,10 @@ import { SERVER_DOWN_MSG } from "./constants";
 import { authActions } from "./authSlice";
 
 export const fetchCompanies =
-  (token, currentPageNo, navigate) => async (dispatch) => {
+  (userId, type, token, currentPageNo, navigate) => async (dispatch) => {
     try {
-      let url = `companies/page/${currentPageNo}`;
+      dispatch(companyActions.setFilterBy(type));
+      let url = `companies/filter?userId=${userId}&type=${type}&pageno=${currentPageNo}`;
       let options = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,10 +30,10 @@ export const fetchCompanies =
   };
 
 export const fetchSearchedCompanies =
-  (searchtext, token) => async (dispatch) => {
+  (searchtext, token, userId) => async (dispatch) => {
     if (!token) return;
     try {
-      let url = `companies/search/${searchtext}`;
+      let url = `companies/search?companyname=${searchtext}&userId=${userId}`;
       let options = {
         headers: {
           Authorization: `Bearer ${token}`,

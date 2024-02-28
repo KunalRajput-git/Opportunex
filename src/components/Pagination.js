@@ -51,7 +51,7 @@ const Pagination = () => {
   };
 
   return (
-    <div className="flex items-center justify-between mt-6 border-gray-400  px-4 ">
+    <div className="flex items-center justify-between border-gray-400 bg-white p-4 absolute w-full bottom-0">
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"
         onClick={onPrevClickHandler}
@@ -61,7 +61,7 @@ const Pagination = () => {
         Prev
       </button>
       <p className="text-sm font-semibold text-gray-700">
-        {companyState.currentPageNo} of {totalPages}
+        {companyState.currentPageNo || 1} of {totalPages || 1}
       </p>
       <button
         className="py-2 px-3 text-sm text-white font-semibold  bg-indigo-600  rounded flex items-center gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed"

@@ -3,7 +3,7 @@ import SuggestBtn from "./SuggestBtn";
 
 const AboutCompany = () => {
   const companyState = useSelector((state) => state.companySlice);
-  const { name, websiteUrl, size, description, foundedYear } =
+  const { name, website_url, size, description, founded_year, type } =
     companyState.selectedCompany;
   return (
     <div className="w-11/12 m-auto mt-4">
@@ -19,7 +19,7 @@ const AboutCompany = () => {
                 rel="noopener noreferrer"
                 className="text-blue-700 font-semibold"
               >
-                {websiteUrl}
+                {website_url}
               </a>
             </td>
           </tr>
@@ -29,13 +29,11 @@ const AboutCompany = () => {
           </tr>
           <tr className="w-full lg:w-[48%]">
             <td className="font-bold pr-4 ">Founded Year:</td>
-            <td>{foundedYear}</td>
+            <td>{founded_year}</td>
           </tr>
           <tr className="w-full lg:w-[48%]">
-            <td className="font-bold pr-4">Industry:</td>
-            <td>
-              <SuggestBtn />
-            </td>
+            <td className="font-bold pr-4">Type:</td>
+            <td>{type}</td>
           </tr>
         </tbody>
       </table>

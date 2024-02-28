@@ -16,7 +16,13 @@ const Search = () => {
     setSearchText(searchtext);
     if (searchtext == "") dispatch(companyActions.setSearchedCompanies([]));
     if (searchtext.length && authState.loggedin)
-      dispatch(fetchSearchedCompanies(searchtext, authState.user.token));
+      dispatch(
+        fetchSearchedCompanies(
+          searchtext,
+          authState.user.token,
+          authState.user._id
+        )
+      );
   };
 
   const onSearchSelectClickHandler = (company) => {

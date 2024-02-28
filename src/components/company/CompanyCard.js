@@ -1,21 +1,16 @@
 import { useState } from "react";
 import {
   ArrowUpRightCircle,
-  BalloonHeart,
-  BalloonHeartFill,
   DashCircle,
-  Heart,
-  HeartFill,
-  InfoCircleFill,
   PlusCircle,
-  Subtract,
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { companyActions } from "../../store/companiesSlice";
 import { MOBILE_DEVICE_WIDTH } from "../../store/constants";
 import { Tooltip } from "react-tooltip";
+import Spinner from "../Spinner";
 
-function CompanyCard({ company, from }) {
+function CompanyCard({ company, from, callback, activeCompanyId, isLoading }) {
   const dispatch = useDispatch();
   let statusColors = {
     applied: "bg-orange-200",
@@ -26,7 +21,7 @@ function CompanyCard({ company, from }) {
   };
 
   const companyState = useSelector((state) => state.companySlice);
-  const { id } = companyState.selectedCompany && companyState.selectedCompany;
+  const { _id } = companyState.selectedCompany && companyState.selectedCompany;
 
   const onCardClickHandler = () => {
     if (window.innerWidth < MOBILE_DEVICE_WIDTH) {
@@ -34,27 +29,16 @@ function CompanyCard({ company, from }) {
     }
     dispatch(companyActions.setSelectedCompany(company));
   };
-  // border-gray-300
   return (
     <div
       className={`relative w-full mt-4 p-4 pr-12 rounded-lg text-gray-700 bg-white flex justify-between items-center hover:shadow-lg duration-300 cursor-pointer ${
-        id === company.id ? "border-4 border-indigo-600 shadow-2xl" : "border"
+        _id === company._id ? "border-4 border-indigo-600 shadow-2xl" : "border"
       }`}
-      // onClick={onCompanyCardClickHandler}
       onClick={onCardClickHandler}
     >
-      {/* <div
-        className="absolute right-2 text-xs top-2 text-red-600 cursor-pointer"
-        data-tooltip-id="my-tooltip"
-        data-tooltip-content="Under Verification!"
-      >
-        <InfoCircleFill size="18" />
-        <Tooltip id="my-tooltip" />
-      </div> */}
-
       <div className="flex gap-4 ">
         <div className="border w-12 h-12 rounded-md flex justify-center items-center">
-          <img src={company.company_logo} className="w-3/5" />
+          <img src={company.logo_url} className="w-3/5" />
         </div>
         <div>
           <div className="flex items-center">
@@ -63,7 +47,7 @@ function CompanyCard({ company, from }) {
             </h1>
           </div>
           <h1 className="italic text-xs font-bold capitalize">
-            {company.type}
+            {company.industry}
           </h1>
         </div>
       </div>
@@ -81,14 +65,46 @@ function CompanyCard({ company, from }) {
           <h1 className=" sm:block text-sm capitalize">{company.status}</h1>
         </div>
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 items-center">
         {from == "company" ? (
-          <PlusCircle size="22" title="add to watchlist" />
+          <>
+            {companyState.filterBy == "watchlist" ? (
+              <>
+                {isLoading && activeCompanyId == company._id ? (
+                  <Spinner />
+                ) : (
+                  <DashCircle
+                    size="22"
+                    title="remove from watchlist"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      callback(company._id);
+                    }}
+                  />
+                )}
+              </>
+            ) : (
+              <>
+                {activeCompanyId == company._id && isLoading ? (
+                  <Spinner />
+                ) : (
+                  <PlusCircle
+                    size="22"
+                    title="add to watchlist"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      callback(company._id);
+                    }}
+                  />
+                )}
+              </>
+            )}
+          </>
         ) : (
           <DashCircle size="22" title="remove from watchlist" />
         )}
         <a
-          href={company.careerPageUrl}
+          href={company.careerpage_url}
           target="_blank"
           onClick={(e) => e.stopPropagation()}
         >
