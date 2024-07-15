@@ -10,8 +10,10 @@ import {
 } from "../utils/validation";
 import AuthError from "../components/auth/AuthError";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createAccount } from "../store/authThunks";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -38,7 +40,7 @@ const Signup = () => {
       let user = { name, email, password };
       setIsLoading(true);
       setReqError("");
-      dispatch(createAccount(user, setIsLoading, setReqError));
+      dispatch(createAccount(user, setIsLoading, setReqError, toast));
     }
   };
 
@@ -94,6 +96,7 @@ const Signup = () => {
         isLoading={isLoading}
       />
       <AuthLabel label_name="Already have an account" to="/login" />
+      <ToastContainer />
     </AuthWrapper>
   );
 };

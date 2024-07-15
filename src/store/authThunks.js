@@ -4,10 +4,11 @@ import { SERVER_DOWN_MSG } from "./constants";
 import { fetchCompanies } from "./companiesThunks";
 
 export const createAccount =
-  (user, setIsLoading, setReqError) => async (dispatch) => {
+  (user, setIsLoading, setReqError, toast) => async (dispatch) => {
     try {
       await axios.post("/user/signup", user);
       setIsLoading(false);
+      toast.success("Account successfully created. Please login to continue.");
     } catch (error) {
       setIsLoading(false);
       const { response } = error;

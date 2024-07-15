@@ -50,3 +50,16 @@ export const validateInputs = (
     return true;
   }
 };
+
+export const isAddApplicationBtnDisabled = (application) => {
+  if (
+    application.company_name.trim() == "" ||
+    application.role.trim() == "" ||
+    application.applied_on.trim() == "" ||
+    application.status.trim() == "" ||
+    application.note.trim() == "" ||
+    application.compensation.trim() == ""
+  )
+    return true;
+  else return false;
+};

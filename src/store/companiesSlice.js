@@ -51,6 +51,9 @@ const companySlice = createSlice({
       state.isLoading = true;
       return state;
     },
+    setCurrentPageNo(state, action) {
+      state.currentPageNo = action.payload;
+    },
     setIsCompanyContainerVisible(state, action) {
       state.isCompanyContainerVisble = action.payload;
     },

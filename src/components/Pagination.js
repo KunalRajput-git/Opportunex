@@ -19,35 +19,41 @@ const Pagination = () => {
   const authState = useSelector((state) => state.authSlice);
 
   let isPrevDisabled =
+    !companyState.totalCompanies ||
     companyState.currentPageNo == 1 ||
-    !authState.user.loggedin ||
+    !authState.loggedin ||
     companyState.error;
 
   let isNextDisabled =
+    !companyState.totalCompanies ||
     companyState.currentPageNo == totalPages ||
-    !authState.user.loggedin ||
+    !authState.loggedin ||
     companyState.error;
 
   const onNextClickHandler = () => {
-    dispatch(companyActions.nextPage());
     dispatch(
       fetchCompanies(
+        authState.user._id,
+        companyState.filterBy,
         authState.user.token,
         companyState.currentPageNo + 1,
         navigate
       )
     );
+    dispatch(companyActions.nextPage());
   };
 
   const onPrevClickHandler = () => {
-    dispatch(companyActions.prevPage());
     dispatch(
       fetchCompanies(
+        authState.user._id,
+        companyState.filterBy,
         authState.user.token,
         companyState.currentPageNo - 1,
         navigate
       )
     );
+    dispatch(companyActions.prevPage());
   };
 
   return (

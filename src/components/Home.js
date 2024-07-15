@@ -20,7 +20,7 @@ const Home = () => {
       <Navbar />
       <div className="flex flex-col lg:flex-row items-center w-11/12 m-auto mt-6 md:mt-28">
         <div className="w-full md:w-11/12">
-          <h1 class="text-left text-3xl md:text-6xl font-bold  text-gray-800 mb-4 md:mb-6">
+          <h1 className="text-left text-3xl md:text-6xl font-bold  text-gray-800 mb-4 md:mb-6">
             Boost Your Job Search with Opportunex.
           </h1>
           <p className="pb-2 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl">

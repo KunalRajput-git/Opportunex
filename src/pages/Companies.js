@@ -31,12 +31,13 @@ const Companies = () => {
 
   return (
     <>
-      <div className="h-screen overflow-hidden flex flex-col -8 ">
+      <div className="h-screen overflow-hidden flex flex-col">
         <Navbar />
         <Search />
         <Filter
           mainHeading="Category"
           list={["all", "mnc", "startup", "watchlist"]}
+          from="company"
         />
         <div className="flex flex-1 overflow-hidden">
           <div
@@ -52,9 +53,9 @@ const Companies = () => {
           <div
             className={`${
               companyState.isCompanyContainerVisble && "hidden"
-            }  w-full md:w-2/5 md:block lg:w-1/3 border-r-2 overflow-y-scroll flex-1`}
+            }  w-full md:w-2/5 md:block lg:w-1/3 border-r-2 overflow-y-scroll flex-1 pb-28 md:pb-0`}
           >
-            <div className="w-full overflow-scroll">
+            <div className="w-full overflow-scroll ">
               {companyState.selectedCompany._id ? (
                 <CompanyOverview />
               ) : (

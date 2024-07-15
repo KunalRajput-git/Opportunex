@@ -6,10 +6,15 @@ import { companyActions } from "../store/companiesSlice";
 import { fetchCompanies } from "../store/companiesThunks";
 import { useNavigate } from "react-router-dom";
 import { formatToShortDate } from "../utils/dateFormatter";
+import { userApplicationActions } from "../store/userApplicationSlice";
 
-const Filter = ({ list }) => {
+const Filter = ({ list, from }) => {
   const [isDrop, setIsDrop] = useState(false);
   const companyState = useSelector((state) => state.companySlice);
+  const userApplicationState = useSelector(
+    (state) => state.userApplicationSlice
+  );
+
   const authState = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,17 +22,37 @@ const Filter = ({ list }) => {
 
   const onFilterHandler = (item) => {
     setIsDrop(false);
-    dispatch(
-      fetchCompanies(
-        authState.user._id,
-        item,
-        authState.user.token,
-        companyState.currentPageNo,
-        navigate
-      )
-    );
+    if (from == "company") {
+      dispatch(
+        fetchCompanies(
+          authState.user._id,
+          item,
+          authState.user.token,
+          companyState.currentPageNo,
+          navigate
+        )
+      );
+    } else {
+      dispatch(userApplicationActions.filterBy(item));
+    }
   };
 
+  const isDisabled = () => {
+    if (from == "company") {
+      return (
+        companyState.isLoading || companyState.error || !authState.loggedin
+      );
+    } else {
+      return false;
+    }
+  };
+
+  const isChecked = (item) => {
+    if (from == "company" && companyState.filterBy == item) return true;
+    else if (from == "tracker" && userApplicationState.filterby == item)
+      return true;
+    else return false;
+  };
   return (
     <div
       className={`${
@@ -38,13 +63,13 @@ const Filter = ({ list }) => {
         <h1 className="text-gray-700 font-semibold">
           Filter by{" "}
           <span className="capitalize font-semibold bg-indigo-200 py-1 px-4 text-indigo-600 rounded-md">
-            {companyState.filterBy}
+            {from == "company"
+              ? companyState.filterBy
+              : userApplicationState.filterby}
           </span>
         </h1>
         <button
-          disabled={
-            companyState.isLoading || companyState.error || !authState.loggedin
-          }
+          disabled={isDisabled()}
           className="text-gray-700 disabled:cursor-not-allowed"
           onClick={() => setIsDrop(!isDrop)}
         >
@@ -54,14 +79,14 @@ const Filter = ({ list }) => {
           <div className="absolute top-14 z-10 h-fit bg-white w-full border left-0 flex flex-wrap p-4 rounded-md gap-4">
             {list.map((item) => (
               <>
-                <label class="flex">
+                <label className="flex">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 rounded-full transition duration-150 ease-in-out cursor-pointer"
-                    checked={item == companyState.filterBy}
-                    onClick={() => onFilterHandler(item)}
+                    className="h-5 w-5 rounded-full transition duration-150 ease-in-out cursor-pointer"
+                    checked={isChecked(item)}
+                    onChange={() => onFilterHandler(item)}
                   />
-                  <span class="ml-2 text-gray-700">{item}</span>
+                  <span className="ml-2 text-gray-700">{item}</span>
                 </label>
               </>
             ))}

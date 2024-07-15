@@ -5,10 +5,10 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
 import axios from "axios";
-import { API_TEST } from "./store/constants";
+import { API_PROD, API_TEST } from "./store/constants";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-axios.defaults.baseURL = API_TEST;
+axios.defaults.baseURL = API_PROD;
 
 root.render(
   <React.StrictMode>

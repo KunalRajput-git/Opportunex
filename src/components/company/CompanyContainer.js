@@ -1,5 +1,5 @@
 import Pagination from "../Pagination";
-import CompanyCard from "./CompanyCard";
+import Card from "../Card";
 import CompanCardSkeleton from "../company/CompanyCardSkeleton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +10,7 @@ import {
 } from "../../store/authThunks";
 import NoDataImg from "../../assets/no_application2.png";
 import { useState } from "react";
+import { companyActions } from "../../store/companiesSlice";
 
 const CompanyContainer = () => {
   const companyState = useSelector((state) => state.companySlice);
@@ -20,6 +21,11 @@ const CompanyContainer = () => {
 
   const addToWatchlistHandler = (companyId) => {
     setActiveCompanyId(companyId);
+    let pageno = companyState.currentPageNo;
+    if (companyState.companies.length == 1) {
+      pageno = 1;
+      dispatch(companyActions.setCurrentPageNo(1));
+    }
     if (authState.loggedin) {
       dispatch(
         addCompanyToWatchlist(
@@ -27,7 +33,7 @@ const CompanyContainer = () => {
           authState.user._id,
           companyId,
           companyState.filterBy,
-          companyState.currentPageNo,
+          pageno,
           toast,
           setIsLoading,
           setActiveCompanyId
@@ -40,14 +46,18 @@ const CompanyContainer = () => {
 
   const removeFromWatchlistHandler = (companyId) => {
     setActiveCompanyId(companyId);
-
+    let pageno = companyState.currentPageNo;
+    if (companyState.companies.length == 1) {
+      pageno = 1;
+      dispatch(companyActions.setCurrentPageNo(1));
+    }
     dispatch(
       removeCompanyFromWatchlist(
         authState.user.token,
         authState.user._id,
         companyId,
         companyState.filterBy,
-        companyState.currentPageNo,
+        pageno,
         toast,
         setIsLoading,
         setActiveCompanyId
@@ -62,18 +72,19 @@ const CompanyContainer = () => {
       )}
       {companyState.isLoading ? (
         <>
-          <CompanCardSkeleton />
-          <CompanCardSkeleton />
-          <CompanCardSkeleton />
-          <CompanCardSkeleton />
-          <CompanCardSkeleton />
+          {Array(5)
+            .fill(0)
+            .map((e, i) => (
+              <CompanCardSkeleton key={i} />
+            ))}
         </>
       ) : (
         <>
           {companyState.companies.length ? (
-            companyState.companies?.map((company) => (
-              <CompanyCard
-                company={company}
+            companyState.companies.map((company) => (
+              <Card
+                key={company._id}
+                data={company}
                 from="company"
                 activeCompanyId={activeCompanyId}
                 isLoading={isLoading}
@@ -82,10 +93,11 @@ const CompanyContainer = () => {
                     ? removeFromWatchlistHandler
                     : addToWatchlistHandler
                 }
+                selectedId={companyState.selectedCompany._id}
               />
             ))
           ) : (
-            <img src={NoDataImg} className="m-auto mt-14"/>
+            <img src={NoDataImg} className="m-auto mt-14" />
           )}
         </>
       )}

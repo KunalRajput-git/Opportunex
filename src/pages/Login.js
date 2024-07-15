@@ -10,7 +10,7 @@ import {
   isValidPassword,
 } from "../utils/validation";
 import AuthError from "../components/auth/AuthError";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { login } from "../store/authThunks";

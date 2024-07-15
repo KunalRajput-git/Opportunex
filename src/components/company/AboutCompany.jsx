@@ -8,10 +8,10 @@ const AboutCompany = () => {
   return (
     <div className="w-11/12 m-auto mt-4">
       <h1 className="text-xl font-semibold capitalize">{name} Overview</h1>
-      <table class="table-auto w-full text-gray-700 mt-4">
+      <table className="table-auto w-full text-gray-700 mt-4">
         <tbody className="flex flex-wrap justify-between leading-8">
           <tr className="w-full lg:w-[48%]">
-            <td class="font-bold pr-4">Website:</td>
+            <td className="font-bold pr-4">Website:</td>
             <td>
               <a
                 href="https://www.microsoft.com/en-in/"
@@ -43,8 +43,3 @@ const AboutCompany = () => {
 };
 
 export default AboutCompany;
-
-{
-  /* Computer Hardware Development
-   */
-}

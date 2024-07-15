@@ -25,16 +25,16 @@ const Navbar = () => {
   window.addEventListener("resize", menuToggleHandler);
 
   return (
-    <nav class="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4  md:py-5 md:fixed top-0 left-0 z-10 border-b-2">
+    <nav className="duration-500 md:flex w-full md:justify-between md:items-center bg-white  px-6 py-4  md:py-5 md:fixed top-0 left-0 z-10 border-b-2">
       <div className="flex justify-between items-center ">
         <Link to="/">
-          <button class="text-2xl md:text-4xl font-bold text-indigo-600">
+          <button className="text-2xl md:text-4xl font-bold text-indigo-600">
             Opportunex {/* navigatorx careerque opportunex */}
           </button>
         </Link>
-        <div class="flex md:hidden">
+        <div className="flex md:hidden">
           <button
-            class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-800 hover:border-gray-800 outline-none focus:outline-none"
+            className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-800 hover:border-gray-800 outline-none focus:outline-none"
             onClick={() => {
               setIsOpen((isOpen) => !isOpen);
             }}
@@ -45,7 +45,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div class="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:gap-6 space-y-5 md:space-y-0">
+        <div className="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:gap-6 space-y-5 md:space-y-0">
           <NavLink
             to="/companies"
             className={({ isActive }) =>
@@ -96,7 +96,7 @@ const Navbar = () => {
               <NavLink to="/signup">
                 <button
                   href="#about"
-                  class=" bg-indigo-600 text-white  py-2 px-4 rounded-md duration-200 lg:text-xl outline-none focus:ring focus:ring-indigo-750 focus:border-transparent flex items-center gap-4"
+                  className=" bg-indigo-600 text-white  py-2 px-4 rounded-md duration-200 lg:text-xl outline-none focus:ring focus:ring-indigo-750 focus:border-transparent flex items-center gap-4"
                 >
                   Get Started
                   <ArrowRightShort size={32} />
