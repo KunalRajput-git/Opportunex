@@ -19,7 +19,7 @@ A platform designed to help job seekers stay organized and track their job appli
 Clone the repo:
 
 ```
-git clone https://github.com/username/repository.git
+git clone https://github.com/KunalRajput-git/Opportunex
 ```
 
 Install dependencies:
